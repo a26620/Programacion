@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.login_03102023'
+    namespace 'com.example.loginandroid_29_09_2023'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.login_03102023"
+        applicationId "com.example.loginandroid_29_09_2023"
         minSdk 24
         targetSdk 33
         versionCode 1
