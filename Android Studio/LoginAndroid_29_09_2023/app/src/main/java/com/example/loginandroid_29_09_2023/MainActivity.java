@@ -31,16 +31,23 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         mainActivity = this;
         initComponents();
+
     }
     private void initComponents(){
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
-
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(mainActivity, message, Toast.LENGTH_SHORT).show();
+                sPeliculas.getDatosPeliculas();
+            }
+        });
     }
 
     @Override
     public void showPeliculas(String message) {
-        Toast.makeText(mainActivity, message, Toast.LENGTH_SHORT).show();
+
     }
 }
