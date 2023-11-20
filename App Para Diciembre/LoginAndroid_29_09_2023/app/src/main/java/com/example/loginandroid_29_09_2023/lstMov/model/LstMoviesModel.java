@@ -1,4 +1,4 @@
-package com.example.loginandroid_29_09_2023.lstMov.model;
+/*package com.example.loginandroid_29_09_2023.lstMov.model;
 
 import com.example.loginandroid_29_09_2023.lstMov.ContractListMovies;
 import com.example.loginandroid_29_09_2023.lstMov.presenter.LstMoviesPresenter;
@@ -40,4 +40,4 @@ public class LstMoviesModel implements ContractListMovies.Model {
         });
     }
 }
-
+*/

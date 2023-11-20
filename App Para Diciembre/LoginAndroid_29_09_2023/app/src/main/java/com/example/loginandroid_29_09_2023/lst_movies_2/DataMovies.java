@@ -1,4 +1,4 @@
-package com.example.loginandroid_29_09_2023.lst_movies_2;
+/*package com.example.loginandroid_29_09_2023.lst_movies_2;
 
 import com.example.loginandroid_29_09_2023.beans.Pelicula;
 
@@ -26,4 +26,4 @@ public class DataMovies {
         // Getters y setters de la clase JsonResponse (omitiendo por simplicidad)
     }
 
-
+*/

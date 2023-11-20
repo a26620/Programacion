@@ -1,4 +1,4 @@
-package com.example.loginandroid_29_09_2023.lstMov.presenter;
+/*package com.example.loginandroid_29_09_2023.lstMov.presenter;
 
 import com.example.loginandroid_29_09_2023.beans.Pelicula;
 import com.example.loginandroid_29_09_2023.lstMov.ContractListMovies;
@@ -30,4 +30,4 @@ public class LstMoviesPresenter implements ContractListMovies.Presenter,
     public void onFailure(String err) {
 
     }
-}
+}*/

@@ -1,4 +1,4 @@
-package com.example.loginandroid_29_09_2023.lst_movies_2.view;
+/*package com.example.loginandroid_29_09_2023.lst_movies_2.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -47,4 +47,4 @@ public class LstPelicula2Activity extends AppCompatActivity
     public void failureMovies(String err) {
 
     }
-}
+}*/

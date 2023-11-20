@@ -14,8 +14,7 @@ import com.example.loginandroid_29_09_2023.beans.User;
 import com.example.loginandroid_29_09_2023.login_user.ContractLoginUser;
 import com.example.loginandroid_29_09_2023.login_user.presenter.LoginUserPresenter;
 import com.example.loginandroid_29_09_2023.login_user.view.LoginUserM;
-import com.example.loginandroid_29_09_2023.lstMov.view.LstMovies;
-import com.example.loginandroid_29_09_2023.lst_movies_2.view.LstPelicula2Activity;
+
 
 public class MainActivity extends AppCompatActivity{
     private static final long SPLASH_DISPLAY_LENGTH = 3000;

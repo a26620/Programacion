@@ -2,6 +2,7 @@ package com.example.loginandroid_29_09_2023.login_user.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.loginandroid_29_09_2023.MainActivity;
 import com.example.loginandroid_29_09_2023.R;
+import com.example.loginandroid_29_09_2023.admin.view.AdminHome;
 import com.example.loginandroid_29_09_2023.beans.User;
 import com.example.loginandroid_29_09_2023.login_user.ContractLoginUser;
 import com.example.loginandroid_29_09_2023.login_user.presenter.LoginUserPresenter;
@@ -47,8 +49,8 @@ public class LoginUserM extends AppCompatActivity implements ContractLoginUser.V
                 //Toast.makeText(mainActivity, message, Toast.LENGTH_SHORT).show();
                 //sPeliculas.getDatosPeliculas();
                 User user = new User();
-                user.setUsername("akkarihdez@gmail.com");
-                user.setToken("1234");
+                user.setUsername(edtEmail.getText().toString());
+                user.setPass(edtPassword.getText().toString());
                 presenter.login(user);
             }
         });
@@ -58,6 +60,9 @@ public class LoginUserM extends AppCompatActivity implements ContractLoginUser.V
     @Override
     public void successLogin(User user) {
         Toast.makeText(mainActivity, user.getUsername(), Toast.LENGTH_SHORT).show();
+        Intent mainIntent = new Intent(LoginUserM.this,
+                AdminHome.class);
+        startActivity(mainIntent);
     }
 
     @Override

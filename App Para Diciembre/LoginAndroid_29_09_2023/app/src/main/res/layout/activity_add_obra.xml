@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".add_obra.view.AddObra">
+
+    <EditText
+        android:id="@+id/edtImagen"
+        android:layout_width="329dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="40dp"
+        android:hint="Imagen"
+        app:layout_constraintBottom_toTopOf="@+id/edtTitulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edtTitulo"
+        android:layout_width="329dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/edtImagen"
+        android:layout_marginBottom="40dp"
+        android:hint="Titulo"
+        app:layout_constraintBottom_toTopOf="@+id/edtDescripcion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edtDescripcion"
+        android:layout_width="329dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/edtTitulo"
+        android:layout_marginBottom="40dp"
+        android:hint="Descripcion"
+        app:layout_constraintBottom_toTopOf="@+id/edtPrecio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edtPrecio"
+        android:layout_width="329dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/edtDescripcion"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="40dp"
+        android:digits="0123456789."
+        android:hint="Precio"
+        android:inputType="numberDecimal"
+        android:maxLength="5"
+        app:layout_constraintBottom_toTopOf="@+id/edtFecha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edtFecha"
+        android:layout_width="329dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="40dp"
+        android:focusable="false"
+        android:hint="Seleccionar fecha"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerOptions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerOptions"
+        android:layout_width="329dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="40dp"
+        android:padding="8dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddObra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnAddObra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="Crear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
