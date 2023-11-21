@@ -1,4 +1,4 @@
-package com.example.loginandroid_29_09_2023.login_user.model;
+package com.example.loginandroid_29_09_2023.add_obra.model;
 
 import android.util.Log;
 
@@ -21,8 +21,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddObraModel implements ContractAddObra.Model {
-    //private static final String IP_BASE = "192.168.104.77:8080"
-    private static final String IP_BASE = "192.168.1.48:8080";
+    private static final String IP_BASE = "192.168.104.77:8080";
+    //private static final String IP_BASE = "192.168.1.48:8080";
     private AddObraPresenter presenter;
     public AddObraModel(AddObraPresenter presenter){
         this.presenter = presenter;
@@ -35,7 +35,7 @@ public class AddObraModel implements ContractAddObra.Model {
                 create(ApiService.class);
 
         // Realizar la solicitud al Servlet
-        Call<DataObras> call = apiService.getDataObra ("OBRA.ADD",obra.getTitulo(),obra.getDescripcion(),obra.getPrecio(),obra.getImg());
+        Call<DataObras> call = apiService.getDataObra ("OBRA.ADD",obra.getTitulo(),obra.getDescripcion(),obra.getPrecio(),obra.getImg(),obra.getId_sala(),obra.getFechaActuacion());
 
         call.enqueue(new Callback<DataObras>(){
 

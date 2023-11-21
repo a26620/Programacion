@@ -21,6 +21,7 @@ public class SalaAction implements IAction {
                 pagDestino = listAction(request, response);
                 break;
         }
+        System.out.println(pagDestino);
         return pagDestino;
     }
     
@@ -35,9 +36,10 @@ public class SalaAction implements IAction {
         Gson gson = new Gson();
         jsonSala += "{\"message\": \"Esto es un mensaje de ejemplo\"," +
                 "\"salasList\": [";
-        if (lstSala.size()!=0){
-            jsonSala += gson.toJson(lstSala.get(0));
+        for (Sala sala:lstSala) {
+            jsonSala += gson.toJson(sala) + ", ";
         }
+        jsonSala = jsonSala.substring(0, jsonSala.length()-2);
         jsonSala += "]}";
                 
         return jsonSala;

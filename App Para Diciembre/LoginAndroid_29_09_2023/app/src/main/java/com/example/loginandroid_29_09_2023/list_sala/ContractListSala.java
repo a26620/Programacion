@@ -6,13 +6,13 @@ import java.util.ArrayList;
 
 public interface ContractListSala  {
     public interface View{
-        public void successLogin(Sala sala);
+        public void successLogin(ArrayList<Sala> listSala);
         void failureLogin(String err);
         // void failureLogin(MyException err);
     }
     public interface Presenter{
         // void login(String email, String pass);
-        void add(Sala sala);
+        void listSala();
         // void login(ViewUser viewUser);
         // VIEW-ORM
         // BEANS-ENTITIES
@@ -23,7 +23,6 @@ public interface ContractListSala  {
             void onFinished(ArrayList<Sala> lstSala);
             void onFailure(String err);
         }
-        void listSalaAPI(Sala sala,
-                         ContractListSala.Model.OnListSalaListener OnListSalaListener);
+        void listSalaAPI(ContractListSala.Model.OnListSalaListener OnListSalaListener);
     }
 }

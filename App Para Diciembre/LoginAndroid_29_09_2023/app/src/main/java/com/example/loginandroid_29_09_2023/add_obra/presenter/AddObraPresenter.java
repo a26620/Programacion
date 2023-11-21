@@ -1,9 +1,8 @@
 package com.example.loginandroid_29_09_2023.add_obra.presenter;
 
 import com.example.loginandroid_29_09_2023.add_obra.ContractAddObra;
+import com.example.loginandroid_29_09_2023.add_obra.model.AddObraModel;
 import com.example.loginandroid_29_09_2023.beans.Obra;
-import com.example.loginandroid_29_09_2023.login_user.model.AddObraModel;
-import com.example.loginandroid_29_09_2023.login_user.model.LoginUserModel;
 
 public class AddObraPresenter implements ContractAddObra.Presenter, ContractAddObra.Model.OnAddObraListener  {
 

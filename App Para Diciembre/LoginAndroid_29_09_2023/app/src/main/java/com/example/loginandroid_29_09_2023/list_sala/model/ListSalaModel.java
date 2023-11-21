@@ -21,14 +21,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ListSalaModel implements ContractListSala.Model{
-    private static final String IP_BASE = "192.168.1.48:8080";
+
+    private static final String IP_BASE = "192.168.104.77:8080";
+    //private static final String IP_BASE = "192.168.1.48:8080";
     private ListSalaPresenter presenter;
     public ListSalaModel(ListSalaPresenter presenter){
         this.presenter = presenter;
     }
 
     @Override
-    public void listSalaAPI(Sala sala, OnListSalaListener OnListSalaListener) {
+    public void listSalaAPI(OnListSalaListener OnListSalaListener) {
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").
                 create(ApiService.class);
 
@@ -68,7 +70,5 @@ public class ListSalaModel implements ContractListSala.Model{
 
             }
         });
-
-
     }
 }

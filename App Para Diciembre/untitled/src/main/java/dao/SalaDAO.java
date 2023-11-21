@@ -25,11 +25,12 @@ public class SalaDAO{
         ArrayList<Sala> salas = new ArrayList<>();
 
         String sql = SQL_FIND_ALL;
+
         boolean coincidencia = false;
 
         try {
             motorSql.connect();
-
+            System.out.println(sql);
             ResultSet rs = motorSql.executeQuery(sql);
 
             while (rs.next()) {
@@ -38,6 +39,7 @@ public class SalaDAO{
                 
                 sala.setNombre(rs.getString(2));
                 sala.setCapacidad(rs.getInt(3));
+                sala.setId_sala(rs.getInt(1));
                 salas.add(sala);
                 
             }

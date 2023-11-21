@@ -26,7 +26,9 @@ public interface ApiService {
                                     @Query("TITULO") String user,
                                     @Query("DESCRIPCION") String desc,
                                     @Query("PRECIO") float precio,
-                                    @Query("IMG") String img);
+                                    @Query("IMG") String img,
+                                    @Query("ID_SALA") int id_sala,
+                                    @Query("FECHA") String fechaActuacion);
     @GET("MyServlet")
     Call<DataSalas> getDataSala(@Query("ACTION") String action);
 
