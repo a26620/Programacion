@@ -3,6 +3,7 @@ package com.example.loginandroid_29_09_2023.add_obra.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.example.loginandroid_29_09_2023.MainActivity;
 import com.example.loginandroid_29_09_2023.R;
 import com.example.loginandroid_29_09_2023.add_obra.ContractAddObra;
 import com.example.loginandroid_29_09_2023.add_obra.presenter.AddObraPresenter;
+import com.example.loginandroid_29_09_2023.admin.view.AdminHome;
 import com.example.loginandroid_29_09_2023.beans.Obra;
 import com.example.loginandroid_29_09_2023.beans.Sala;
 import com.example.loginandroid_29_09_2023.beans.User;
@@ -40,6 +42,7 @@ public class AddObra extends AppCompatActivity implements ContractAddObra.View, 
     private Spinner spinnerOptions;
     private String selectedDate;
     private Button btnAddObra;
+    private Button AOvolverAH;
     private String seleccion;
     private int IdSala;
 
@@ -77,10 +80,18 @@ public class AddObra extends AppCompatActivity implements ContractAddObra.View, 
         btnAddObra = findViewById(R.id.btnAddObra);
         edtFecha = findViewById(R.id.edtFecha);
         spinnerOptions = findViewById(R.id.spinnerOptions);
+        AOvolverAH = findViewById(R.id.AOvolverAH);
+        AOvolverAH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(AddObra.this,
+                        AdminHome.class);
+                startActivity(mainIntent);
+            }
+        });
         btnAddObra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(mainActivity, message, Toast.LENGTH_SHORT).show();
                 //sPeliculas.getDatosPeliculas();
                 Obra obra = new Obra();
                 obra.setTitulo(edtTitulo.getText().toString());
@@ -88,11 +99,8 @@ public class AddObra extends AppCompatActivity implements ContractAddObra.View, 
                 obra.setImg(edtImagen.getText().toString());
                 obra.setPrecio(Float.parseFloat(edtPrecio.getText().toString()));
                 obra.setFechaActuacion(edtFecha.getText().toString());
-                Log.e("onClick: ", String.valueOf(IdSala));
                 for (Sala sala : listSalas) {
-                    Log.e("GetNombre: ", String.valueOf(sala.getNombre()));
                     if (sala.getNombre() == seleccion) {
-                        Log.e("For: ", String.valueOf(sala.getId_sala()));
                         IdSala = sala.getId_sala();
                     }
                 }
@@ -124,13 +132,14 @@ public class AddObra extends AppCompatActivity implements ContractAddObra.View, 
     }
 
     @Override
-    public void successLogin(Obra obra) {
-
+    public void successLogin() {
+        Intent mainIntent = new Intent(AddObra.this,
+                AdminHome.class);
+        startActivity(mainIntent);
     }
 
     @Override
     public void successLogin(ArrayList<Sala> listSala) {
-        Log.e("successLogin: ",listSala.toString() );
         listSalas = listSala;
 
         List<String> opcionesList = new ArrayList<>();
@@ -165,7 +174,6 @@ public class AddObra extends AppCompatActivity implements ContractAddObra.View, 
                 seleccion = parent.getItemAtPosition(position).toString();
                 // Haz algo con la opción seleccionada (A, B, C)
                 // Por ejemplo: muestra un mensaje con la opción seleccionada
-                Toast.makeText(AddObra.this, "Seleccionaste: " + seleccion, Toast.LENGTH_SHORT).show();
             }
 
 

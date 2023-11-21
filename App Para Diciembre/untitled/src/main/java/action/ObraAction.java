@@ -1,6 +1,7 @@
 package action;
 
 import action.IAction;
+import com.google.gson.Gson;
 import dao.ObraDAO;
 import model.Mensaje;
 
@@ -21,6 +22,7 @@ public class ObraAction implements IAction {
                 pagDestino = addAction(request, response);
                 break;
         }
+        System.out.println(pagDestino);
         return pagDestino;
     }
     
@@ -30,7 +32,11 @@ public class ObraAction implements IAction {
         ObraDAO obraDAO = new ObraDAO();
         
         Mensaje mensaje = obraDAO.add(request.getParameter("TITULO"),request.getParameter("DESCRIPCION"),request.getParameter("IMG"), Float.parseFloat(request.getParameter("PRECIO")), Integer.parseInt(request.getParameter("ID_SALA")),request.getParameter("FECHA"));
-                
-        return Mensaje.convertMensajeToJSONString(mensaje);  
+
+        String jsonObra = "";
+        Gson gson = new Gson();
+        jsonObra += "{\"message\": \"Obra Añadida\"}";
+
+        return jsonObra;
     }
 }

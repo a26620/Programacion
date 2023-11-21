@@ -29,24 +29,21 @@ public class AddObraModel implements ContractAddObra.Model {
     }
 
     @Override
-    public void addObraAPI(Obra obra, OnAddObraListener OnAddObraListener) {
+    public void addObraAPI(Obra obra, OnAddObraListener onAddObraListener) {
         // Crear una instancia de ApiService
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").
                 create(ApiService.class);
 
         // Realizar la solicitud al Servlet
         Call<DataObras> call = apiService.getDataObra ("OBRA.ADD",obra.getTitulo(),obra.getDescripcion(),obra.getPrecio(),obra.getImg(),obra.getId_sala(),obra.getFechaActuacion());
-
         call.enqueue(new Callback<DataObras>(){
-
             @Override
             public void onResponse(Call<DataObras> call, Response<DataObras> response) {
                 if (response.isSuccessful()) {
-                    // Procesar la respuesta aquí
                     DataObras dataObras = response.body();
-                    //String message = myData.getMessage();
                     try {
-                        OnAddObraListener.onFinished();
+                        onAddObraListener.onFinished();
+                        Log.e("onResponse: ","POOOOOOOO" );
                     }catch(IndexOutOfBoundsException e){
                         Log.e("No Found User","no user exists");
                     }

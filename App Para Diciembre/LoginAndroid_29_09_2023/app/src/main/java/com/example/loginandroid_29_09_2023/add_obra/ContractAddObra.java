@@ -5,7 +5,7 @@ import com.example.loginandroid_29_09_2023.beans.Obra;
 
 public interface ContractAddObra {
     public interface View{
-        public void successLogin(Obra obra);
+        public void successLogin();
         void failureLogin(String err);
         // void failureLogin(MyException err);
     }
@@ -23,6 +23,6 @@ public interface ContractAddObra {
             void onFailure(String err);
         }
         void addObraAPI(Obra obra,
-                        OnAddObraListener OnAddObraListener);
+                        OnAddObraListener onAddObraListener);
     }
 }

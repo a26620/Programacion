@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.example.loginandroid_29_09_2023.R;
 import com.example.loginandroid_29_09_2023.add_obra.view.AddObra;
 import com.example.loginandroid_29_09_2023.beans.User;
+import com.example.loginandroid_29_09_2023.list_sala.view.ListSala;
 import com.example.loginandroid_29_09_2023.login_user.view.LoginUserM;
 
 public class AdminHome extends AppCompatActivity {
@@ -35,6 +36,14 @@ public class AdminHome extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainIntent = new Intent(AdminHome.this,
                         AddObra.class);
+                startActivity(mainIntent);
+            }
+        });
+        btnViewSalas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(AdminHome.this,
+                        ListSala.class);
                 startActivity(mainIntent);
             }
         });
