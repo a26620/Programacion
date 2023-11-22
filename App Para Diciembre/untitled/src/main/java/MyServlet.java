@@ -1,6 +1,7 @@
 import action.ObraAction;
 import action.SalaAction;
 import action.UserAction;
+import action.ValoracionAction;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,6 +36,9 @@ public class MyServlet extends HttpServlet {
                 break;
             case "OBRA":
                 out.print(new ObraAction().execute(request, response));
+                break;
+            case "VALORACION":
+                out.print(new ValoracionAction().execute(request, response));
                 break;
         }
         out.print(answer);

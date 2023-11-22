@@ -1,8 +1,11 @@
 package com.example.loginandroid_29_09_2023.utils;
 
 import com.example.loginandroid_29_09_2023.add_obra.data.DataObras;
+import com.example.loginandroid_29_09_2023.add_valoracion.data.DataValoracion;
 import com.example.loginandroid_29_09_2023.list_sala.data.DataSalas;
 import com.example.loginandroid_29_09_2023.login_user.data.DataUsers;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -39,6 +42,21 @@ public interface ApiService {
 
     @GET("MyServlet")
     Call<DataObras> listObrasMostSell(@Query("ACTION") String action);
+
+    @GET("MyServlet")
+    Call<DataObras> listObrasFilter(@Query("ACTION") String action,
+                                    @Query("ID_GENERO") ArrayList<Integer> id_genero,
+                                    @Query("FECHA_ACTUACION") ArrayList<String> fechaActuacion,
+                                    @Query("EDAD_RECOMENDADA") int edadRecomendada);
+
+    @GET("MyServlet")
+    Call<DataValoracion> addValoracion(@Query("ACTION") String action,
+                                       @Query("ID_USER") int id_genero,
+                                       @Query("ID_OBRA") int id_obra,
+                                       @Query("PUNTUACION") float puntuacion);
+
+    @GET("MyServlet")
+    Call<DataObras> listObrasBestRating(@Query("ACTION") String action);
 
 
         /*@GET("MyServlet")

@@ -28,16 +28,22 @@ public class ObraAction implements IAction {
             case "LIST":
                 pagDestino = list(request, response);
                 break;
+            case "LISTBESTRATING":
+                pagDestino = listbestratingAction(request, response);
+                break;
+            case "LISTFILTER":
+                //pagDestino = listfilterAction(request, response);
+                break;
         }
         System.out.println(pagDestino);
         return pagDestino;
     }
-    
+
     private String addAction(HttpServletRequest request,
-            HttpServletResponse response) {
-        
+                             HttpServletResponse response) {
+
         ObraDAO obraDAO = new ObraDAO();
-        
+
         Mensaje mensaje = obraDAO.add(request.getParameter("TITULO"),request.getParameter("DESCRIPCION"),request.getParameter("IMG"), Float.parseFloat(request.getParameter("PRECIO")), Integer.parseInt(request.getParameter("ID_SALA")),request.getParameter("FECHA"));
 
         String jsonObra = "";
@@ -64,7 +70,6 @@ public class ObraAction implements IAction {
         jsonObra += "]}";
         return jsonObra;
     }
-
     private String list(HttpServletRequest request,
                         HttpServletResponse response) {
 
@@ -82,6 +87,42 @@ public class ObraAction implements IAction {
         jsonObra = jsonObra.substring(0, jsonObra.length()-2);
         jsonObra += "]}";
 
+        return jsonObra;
+    }
+    private String listbestratingAction(HttpServletRequest request,
+                                        HttpServletResponse response) {
+
+        ObraDAO obraDAO = new ObraDAO();
+
+        ArrayList<Obra> lstObra = obraDAO.listbestrating();
+
+        String jsonObra = "";
+        Gson gson = new Gson();
+        jsonObra += "{\"message\": \"Esto es un mensaje de ejemplo\"," +
+                "\"obrasList\": [";
+        for (Obra obra:lstObra) {
+            jsonObra += gson.toJson(obra) + ", ";
+        }
+        jsonObra = jsonObra.substring(0, jsonObra.length()-2);
+        jsonObra += "]}";
+        return jsonObra;
+    }
+    private String listfilterAction(HttpServletRequest request,
+                                    HttpServletResponse response) {
+
+        ObraDAO obraDAO = new ObraDAO();
+
+        ArrayList<Obra> lstObra = obraDAO.listfilter(request.getParameter("ID_GENERO"),request.getParameter("FECHA_ACTUACION"),Integer.parseInt(request.getParameter("EDAD_RECOMENDADA")));
+
+        String jsonObra = "";
+        Gson gson = new Gson();
+        jsonObra += "{\"message\": \"Esto es un mensaje de ejemplo\"," +
+                "\"obrasList\": [";
+        for (Obra obra:lstObra) {
+            jsonObra += gson.toJson(obra) + ", ";
+        }
+        jsonObra = jsonObra.substring(0, jsonObra.length()-2);
+        jsonObra += "]}";
         return jsonObra;
     }
 }

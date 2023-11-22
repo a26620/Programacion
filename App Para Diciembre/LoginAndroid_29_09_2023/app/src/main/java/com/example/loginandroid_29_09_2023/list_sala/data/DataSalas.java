@@ -22,7 +22,7 @@ public class DataSalas {
         return salasList;
     }
 
-    public void setSalaList(ArrayList<Obra> usersList) {
+    public void setSalaList(ArrayList<Sala> salasList) {
         this.salasList = salasList;
     }
 }

@@ -20,7 +20,7 @@ public class DataObras {
         return obrasList;
     }
 
-    public void setProductList(ArrayList<Obra> usersList) {
+    public void setProductList(ArrayList<Obra> obrasList) {
         this.obrasList = obrasList;
     }
 }

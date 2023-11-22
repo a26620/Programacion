@@ -15,14 +15,13 @@ public class ObraDAO{
     private static final String SQL_INSERT = "INSERT INTO OBRA (titulo, descripcion, img, precio, id_sala, fechaActuacion) VALUES ";
     private static final String SQL_UPDATE = "UPDATE OBRA SET ";
     private static final String SQL_DELETE = " DELETE FROM OBRA WHERE ";
-    private static final String SQL_FIND_ALL = "SELECT  *  FROM OBRA WHERE 1=1 ";   
+    private static final String SQL_FIND_ALL = "SELECT  *  FROM OBRA WHERE 1=1 ";
 
     private MotorSQL motorSql;
 
     public ObraDAO() {
         this.motorSql = new MotorSQL();
     }
-
 
     public Mensaje add(String titulo, String descripcion, String img, float precio, int id_sala, String fechaActuacion) {
 
@@ -132,6 +131,108 @@ public class ObraDAO{
                 obra.setId_sala(rs.getInt(6));
                 obra.setFechaActuacion(rs.getString(7));
 
+                obras.add(obra);
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            motorSql.disconnect();
+        }
+        return obras;
+
+    }
+
+    public ArrayList<Obra> listbestrating() {
+
+        ArrayList<Obra> obras = new ArrayList<>();
+
+        String sql = "SELECT o.id_obra, o.titulo, o.img, ROUND(AVG(v.puntuacion), 1) AS puntuacion_media FROM OBRA o \n" +
+                "JOIN VALORACION v ON o.id_obra = v.id_obra \n" +
+                "GROUP BY o.id_obra, o.titulo, o.img \n" +
+                "ORDER BY puntuacion_media DESC LIMIT 10;";
+        try {
+            motorSql.connect();
+            ResultSet rs = motorSql.executeQuery(sql);
+
+            while (rs.next()) {
+
+                Obra obra = new Obra();
+
+                obra.setId_obra(rs.getInt(1));
+                obra.setTitulo(rs.getString(2));
+                obra.setImg(rs.getString(3));
+                obra.setvaloracionMedia(rs.getFloat(3));
+                obras.add(obra);
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            motorSql.disconnect();
+        }
+        return obras;
+
+    }
+
+    public ArrayList<Obra> listfilter(String id_generos, String fechaActuacion, int edadRecomendada) {
+
+        String[] fechaActuacionA = fechaActuacion.split(",");
+        String[] id_generosA = id_generos.split(",");
+
+        String fechaInsert1;
+        String fechaInsert2;
+
+        try {
+            SimpleDateFormat formatoFechaOriginal = new SimpleDateFormat("dd/MM/yyyy");
+            Date fecha1 = formatoFechaOriginal.parse(fechaActuacionA[0]);
+            SimpleDateFormat formatoFechaDeseada = new SimpleDateFormat("yyyy-MM-dd");
+            fechaInsert1 = formatoFechaDeseada.format(fecha1);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            SimpleDateFormat formatoFechaOriginal = new SimpleDateFormat("dd/MM/yyyy");
+            Date fecha2 = formatoFechaOriginal.parse(fechaActuacionA[1]);
+            SimpleDateFormat formatoFechaDeseada = new SimpleDateFormat("yyyy-MM-dd");
+            fechaInsert2 = formatoFechaDeseada.format(fecha2);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        ArrayList<Obra> obras = new ArrayList<>();
+
+        String sql = SQL_FIND_ALL;
+
+        if (id_generosA.length != 0) {
+            sql += " AND id_genero IN(";
+
+            for(int i = 0;i < id_generosA.length; i++){
+                sql+= id_generosA[i]+",";
+            }
+            sql = sql.substring(0, sql.length()-2);
+            sql += ")";
+        }
+        if (!fechaActuacion.isEmpty()) {
+            sql += " AND fechaActuacion BETWEEN '" + fechaInsert1 + "' AND '"+ fechaInsert2 +"'";
+        }
+        if (edadRecomendada != 0) {
+            sql += " AND edadRecomendada = " + edadRecomendada;
+        }
+
+        try {
+            motorSql.connect();
+            ResultSet rs = motorSql.executeQuery(sql);
+
+            while (rs.next()) {
+
+                Obra obra = new Obra();
+
+                obra.setId_obra(rs.getInt(1));
+                obra.setTitulo(rs.getString(2));
+                obra.setImg(rs.getString(3));
+                obra.setvaloracionMedia(rs.getFloat(3));
                 obras.add(obra);
 
             }
