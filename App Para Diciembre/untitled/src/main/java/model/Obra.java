@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Date;
-import java.util.List;
 
 public class Obra{
     private String titulo;
@@ -10,10 +9,10 @@ public class Obra{
     private float precio;
     private int id_obra;
     private int id_sala;
-    private Date fechaActuacion;
+    private String fechaActuacion;
 
 
-    public Obra(String titulo, String descripcion, String img, float precio, int id_obra, int id_sala, Date fechaActuacion) {
+    public Obra(String titulo, String descripcion, String img, float precio, int id_obra, int id_sala, String fechaActuacion) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.img = img;
@@ -31,11 +30,11 @@ public class Obra{
         this.id_sala = id_sala;
     }
 
-    public Date getFechaActuacion() {
+    public String getFechaActuacion() {
         return fechaActuacion;
     }
 
-    public void setFechaActuacion(Date fechaActuacion) {
+    public void setFechaActuacion(String fechaActuacion) {
         this.fechaActuacion = fechaActuacion;
     }
 

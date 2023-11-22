@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,8 +14,11 @@ import com.example.loginandroid_29_09_2023.MainActivity;
 import com.example.loginandroid_29_09_2023.R;
 import com.example.loginandroid_29_09_2023.admin.view.AdminHome;
 import com.example.loginandroid_29_09_2023.beans.User;
+import com.example.loginandroid_29_09_2023.lista_obra_most_sell.view.ListObraMostSell;
 import com.example.loginandroid_29_09_2023.login_user.ContractLoginUser;
 import com.example.loginandroid_29_09_2023.login_user.presenter.LoginUserPresenter;
+
+import java.util.Objects;
 
 public class LoginUserM extends AppCompatActivity implements ContractLoginUser.View{
 
@@ -59,9 +63,16 @@ public class LoginUserM extends AppCompatActivity implements ContractLoginUser.V
 
     @Override
     public void successLogin(User user) {
-        Intent mainIntent = new Intent(LoginUserM.this,
-                AdminHome.class);
-        startActivity(mainIntent);
+        if (Objects.equals(user.getRol(), "A")){
+            Intent mainIntent = new Intent(LoginUserM.this,
+                    AdminHome.class);
+            startActivity(mainIntent);
+        } else if (Objects.equals(user.getRol(), "U")) {
+            Intent mainIntent = new Intent(LoginUserM.this,
+                    ListObraMostSell.class);
+            startActivity(mainIntent);
+        }
+
     }
 
     @Override

@@ -140,6 +140,8 @@ public class AddObra extends AppCompatActivity implements ContractAddObra.View, 
 
     @Override
     public void successLogin(ArrayList<Sala> listSala) {
+        Log.e("successLogin: ", "ESTOY DONDE NO DEBO");
+
         listSalas = listSala;
 
         List<String> opcionesList = new ArrayList<>();

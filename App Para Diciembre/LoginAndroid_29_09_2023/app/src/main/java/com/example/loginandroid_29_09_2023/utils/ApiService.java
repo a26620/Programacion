@@ -18,19 +18,28 @@ public interface ApiService {
 
 
       @GET("MyServlet")
-        Call<DataUsers> getDataUser(@Query("ACTION") String action,
+        Call<DataUsers> loginUser(@Query("ACTION") String action,
                                     @Query("USER") String user,
                                     @Query("PASS") String pass);
     @GET("MyServlet")
-        Call<DataObras> getDataObra(@Query("ACTION") String action,
+        Call<DataObras> addObra(@Query("ACTION") String action,
                                     @Query("TITULO") String user,
                                     @Query("DESCRIPCION") String desc,
                                     @Query("PRECIO") float precio,
                                     @Query("IMG") String img,
                                     @Query("ID_SALA") int id_sala,
                                     @Query("FECHA") String fechaActuacion);
+
     @GET("MyServlet")
-    Call<DataSalas> getDataSala(@Query("ACTION") String action);
+    Call<DataSalas> listSala(@Query("ACTION") String action);
+
+    @GET("MyServlet")
+    Call<DataObras> listObras(@Query("ACTION") String action,
+                              @Query("ID_SALA") int id_sala);
+
+    @GET("MyServlet")
+    Call<DataObras> listObrasMostSell(@Query("ACTION") String action);
+
 
         /*@GET("MyServlet")
         Call<MyData> getDataUser(@Query("ACTION") String action);

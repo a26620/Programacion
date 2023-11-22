@@ -22,20 +22,20 @@ import retrofit2.Response;
 
 public class ListSalaModel implements ContractListSala.Model{
 
-    private static final String IP_BASE = "192.168.104.77:8080";
-    //private static final String IP_BASE = "192.168.1.48:8080";
+    //private static final String IP_BASE = "192.168.104.77:8080";
+    private static final String IP_BASE = "192.168.1.48:8080";
     private ListSalaPresenter presenter;
     public ListSalaModel(ListSalaPresenter presenter){
         this.presenter = presenter;
     }
 
     @Override
-    public void listSalaAPI(OnListSalaListener OnListSalaListener) {
+    public void listSalaAPI(OnListSalaListener onListSalaListener) {
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").
                 create(ApiService.class);
 
         // Realizar la solicitud al Servlet
-        Call<DataSalas> call = apiService.getDataSala ("SALA.LIST");
+        Call<DataSalas> call = apiService.listSala ("SALA.LIST");
         call.enqueue(new Callback<DataSalas>() {
             @Override
             public void onResponse(Call<DataSalas> call, Response<DataSalas> response) {
@@ -46,7 +46,7 @@ public class ListSalaModel implements ContractListSala.Model{
                     ArrayList<Sala> lstSala = dataSalas.getSalasListList();
 
                     try {
-                        OnListSalaListener.onFinished(lstSala);
+                        onListSalaListener.onFinished(lstSala);
                     }catch(IndexOutOfBoundsException e){
                         Log.e("No Found User","no user exists");
                     }

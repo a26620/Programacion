@@ -4,6 +4,7 @@ import action.IAction;
 import com.google.gson.Gson;
 import dao.ObraDAO;
 import model.Mensaje;
+import model.Obra;
 
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,12 @@ public class ObraAction implements IAction {
             case "ADD":
                 pagDestino = addAction(request, response);
                 break;
+            case "LISTMOSTSELL":
+                pagDestino = listmostsellAction(request, response);
+                break;
+            case "LIST":
+                pagDestino = list(request, response);
+                break;
         }
         System.out.println(pagDestino);
         return pagDestino;
@@ -36,6 +43,44 @@ public class ObraAction implements IAction {
         String jsonObra = "";
         Gson gson = new Gson();
         jsonObra += "{\"message\": \"Obra Añadida\"}";
+
+        return jsonObra;
+    }
+    private String listmostsellAction(HttpServletRequest request,
+                                      HttpServletResponse response) {
+
+        ObraDAO obraDAO = new ObraDAO();
+
+        ArrayList<Obra> lstObra = obraDAO.listmostsell();
+
+        String jsonObra = "";
+        Gson gson = new Gson();
+        jsonObra += "{\"message\": \"Esto es un mensaje de ejemplo\"," +
+                "\"obrasList\": [";
+        for (Obra obra:lstObra) {
+            jsonObra += gson.toJson(obra) + ", ";
+        }
+        jsonObra = jsonObra.substring(0, jsonObra.length()-2);
+        jsonObra += "]}";
+        return jsonObra;
+    }
+
+    private String list(HttpServletRequest request,
+                        HttpServletResponse response) {
+
+        ObraDAO obraDAO = new ObraDAO();
+
+        ArrayList<Obra> lstObra = obraDAO.list(Integer.parseInt(request.getParameter("ID_SALA")));
+
+        String jsonObra = "";
+        Gson gson = new Gson();
+        jsonObra += "{\"message\": \"Esto es un mensaje de ejemplo\"," +
+                "\"obrasList\": [";
+        for (Obra obra:lstObra) {
+            jsonObra += gson.toJson(obra) + ", ";
+        }
+        jsonObra = jsonObra.substring(0, jsonObra.length()-2);
+        jsonObra += "]}";
 
         return jsonObra;
     }
