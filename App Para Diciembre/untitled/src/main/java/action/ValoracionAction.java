@@ -21,7 +21,7 @@ public class ValoracionAction implements IAction {
         String[] arrayAction = action.split("\\.");
         switch (arrayAction[1]) {
             case "ADD":
-               // pagDestino = addValoracionAction(request, response);
+                pagDestino = addValoracionAction(request, response);
                 break;
         }
         System.out.println(pagDestino);

@@ -73,10 +73,30 @@ public class ObraDAO{
 
         ArrayList<Obra> obras = new ArrayList<>();
 
-        String sql = "SELECT OBRA.id_obra, OBRA.titulo, OBRA.img, COUNT(COMPRA.id_obra) as cantidad_vendida FROM OBRA \n" +
-                "LEFT JOIN COMPRA ON OBRA.id_obra = COMPRA.id_obra \n" +
-                "GROUP BY OBRA.id_obra \n" +
-                "ORDER BY cantidad_vendida DESC LIMIT 10;";
+        String sql = "SELECT \n" +
+                "    OBRA.id_obra, \n" +
+                "    OBRA.titulo, \n" +
+                "    OBRA.descripcion, \n" +
+                "    OBRA.img, \n" +
+                "    OBRA.precio, \n" +
+                "    OBRA.edadRecomendada, \n" +
+                "    OBRA.id_genero, \n" +
+                "    GENERO.nombre AS nombre_genero, \n" +
+                "    COUNT(COMPRA.id_obra) AS cantidad_vendida,\n" +
+                "    COALESCE(\n" +
+                "        (\n" +
+                "            SELECT ROUND(AVG(puntuacion), 1) \n" +
+                "            FROM VALORACION \n" +
+                "            WHERE id_obra = OBRA.id_obra\n" +
+                "        ), 0\n" +
+                "    ) AS puntuacion_media\n" +
+                "FROM OBRA\n" +
+                "LEFT JOIN COMPRA ON OBRA.id_obra = COMPRA.id_obra\n" +
+                "LEFT JOIN GENERO ON OBRA.id_genero = GENERO.id_genero\n" +
+                "GROUP BY OBRA.id_obra, OBRA.titulo, OBRA.img\n" +
+                "ORDER BY cantidad_vendida DESC LIMIT 10;\n";
+
+        System.out.println(sql);
 
         boolean coincidencia = false;
 
@@ -90,7 +110,12 @@ public class ObraDAO{
 
                 obra.setId_obra(rs.getInt(1));
                 obra.setTitulo(rs.getString(2));
-                obra.setImg(rs.getString(3));
+                obra.setDescripcion(rs.getString(3));
+                obra.setImg(rs.getString(4));
+                obra.setPrecio(rs.getFloat(5));
+                obra.setEdadRecomendada(rs.getInt(6));
+                obra.setGenero(rs.getString(8));
+                obra.setValoracionMedia(rs.getInt(10));
                 obras.add(obra);
 
             }
@@ -162,7 +187,7 @@ public class ObraDAO{
                 obra.setId_obra(rs.getInt(1));
                 obra.setTitulo(rs.getString(2));
                 obra.setImg(rs.getString(3));
-                obra.setvaloracionMedia(rs.getFloat(3));
+                obra.setValoracionMedia(rs.getInt(4));
                 obras.add(obra);
 
             }
@@ -232,7 +257,7 @@ public class ObraDAO{
                 obra.setId_obra(rs.getInt(1));
                 obra.setTitulo(rs.getString(2));
                 obra.setImg(rs.getString(3));
-                obra.setvaloracionMedia(rs.getFloat(3));
+                obra.setValoracionMedia(rs.getInt(3));
                 obras.add(obra);
 
             }

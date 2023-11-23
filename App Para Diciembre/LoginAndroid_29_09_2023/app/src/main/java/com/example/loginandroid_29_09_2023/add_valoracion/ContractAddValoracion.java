@@ -14,7 +14,7 @@ public interface ContractAddValoracion {
     }
     public interface Presenter{
         // void login(String email, String pass);
-        void addValoracion(int id_user, int id_obra, float puntuacion);
+        void addValoracion(int id_user, int id_obra, int puntuacion);
         // void login(ViewUser viewUser);
         // VIEW-ORM
         // BEANS-ENTITIES
@@ -25,6 +25,6 @@ public interface ContractAddValoracion {
             void onFinished(ArrayList<Valoracion> lstValoracion);
             void onFailure(String err);
         }
-        void addValoracionAPI(int id_user, int id_obra, float puntuacion,OnAddValoracionListener onAddValoracionListener);
+        void addValoracionAPI(int id_user, int id_obra, int puntuacion,OnAddValoracionListener onAddValoracionListener);
     }
 }

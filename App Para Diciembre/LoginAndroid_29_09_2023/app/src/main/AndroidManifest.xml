@@ -19,12 +19,6 @@
             android:name=".ficha_descriptiva.FichaDescriptiva"
             android:exported="false" />
         <activity
-            android:name=".ficha_descriptiva.ficha_descriptiva"
-            android:exported="false" />
-        <activity
-            android:name=".lista_obra_most_sell.view.ListObraMostSell"
-            android:exported="false" />
-        <activity
             android:name=".list_obra.view.ListObra"
             android:exported="false" />
         <activity
@@ -39,6 +33,9 @@
         <activity
             android:name=".login_user.view.LoginUserM"
             android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

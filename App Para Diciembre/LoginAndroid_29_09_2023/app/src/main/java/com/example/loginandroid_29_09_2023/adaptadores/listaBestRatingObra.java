@@ -2,6 +2,7 @@ package com.example.loginandroid_29_09_2023.adaptadores;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,27 +17,28 @@ import com.example.loginandroid_29_09_2023.ficha_descriptiva.FichaDescriptiva;
 
 import java.util.ArrayList;
 
-public class listaMostSellObra extends RecyclerView.Adapter<listaMostSellObra.ObraViewHolder> {
+public class listaBestRatingObra extends RecyclerView.Adapter<listaBestRatingObra.ObraViewHolder> {
 
     ArrayList<Obra> lstObra;
     Context context;
 
 
-    public listaMostSellObra(ArrayList<Obra> lstObra) {
+    public listaBestRatingObra(ArrayList<Obra> lstObra) {
         this.lstObra = lstObra;
     }
 
     @NonNull
     @Override
-    public listaMostSellObra.ObraViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public listaBestRatingObra.ObraViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_obra,null,false);
-        return new listaMostSellObra.ObraViewHolder(view);
+        return new listaBestRatingObra.ObraViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull listaMostSellObra.ObraViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull listaBestRatingObra.ObraViewHolder holder, int position) {
         holder.nombreObra.setText(lstObra.get(position).getTitulo());
+        Log.e("ASAAAAAAAAAAAAAAAAAAAAAAAAAAA:" , lstObra.get(position).getTitulo());
         holder.itemView.setOnClickListener(v -> {
             Obra obra = lstObra.get(position);
             int id_obra = obra.getId_obra();

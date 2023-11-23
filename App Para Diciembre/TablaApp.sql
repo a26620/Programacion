@@ -64,11 +64,13 @@ CREATE TABLE VALORACION (
     id_rating INT AUTO_INCREMENT PRIMARY KEY,
     id_user INT,
     id_obra INT,
-    puntuacion DECIMAL(3, 1),
+    puntuacion INT,
     fechaValoracion DATE,
     FOREIGN KEY (id_user) REFERENCES USR(id_user),
-    FOREIGN KEY (id_obra) REFERENCES OBRA(id_obra)
+    FOREIGN KEY (id_obra) REFERENCES OBRA(id_obra),
+    UNIQUE (id_user, id_obra)
 );
+
 
 
 

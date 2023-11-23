@@ -1,40 +1,57 @@
 package com.example.loginandroid_29_09_2023.beans;
 
-import java.util.Date;
-
 public class Obra{
+    private int id_obra;
     private String titulo;
     private String descripcion;
     private String img;
     private float precio;
-    private int id_obra;
     private int id_sala;
     private String fechaActuacion;
-    private float valoracionMedia;
+    private int valoracionMedia;
+    private int edadRecomendada;
+    private String genero;
 
 
-    public Obra(String titulo, String descripcion, String img, float precio, int id_obra, int id_sala, String fechaActuacion, float valoracionMedia) {
+    public Obra(int id_obra, String titulo, String descripcion, String img, float precio, int id_sala, String fechaActuacion, int valoracionMedia, int edadRecomendada, String genero) {
+        this.id_obra = id_obra;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.img = img;
         this.precio = precio;
-        this.id_obra = id_obra;
         this.id_sala = id_sala;
         this.fechaActuacion = fechaActuacion;
         this.valoracionMedia = valoracionMedia;
+        this.edadRecomendada = edadRecomendada;
+        this.genero = genero;
+    }
+
+    public int getValoracionMedia() {
+        return valoracionMedia;
+    }
+
+    public void setValoracionMedia(int valoracionMedia) {
+        this.valoracionMedia = valoracionMedia;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+    public int getEdadRecomendada() {
+        return edadRecomendada;
+    }
+
+    public void setEdadRecomendada(int edadRecomendada) {
+        this.edadRecomendada = edadRecomendada;
     }
 
     public int getId_sala() {
         return id_sala;
     }
 
-    public void setvaloracionMedia(float valoracionMedia) {
-        this.valoracionMedia = valoracionMedia;
-    }
-
-    public float getvaloracionMedia() {
-        return valoracionMedia;
-    }
 
     public void setId_sala(int id_sala) {
         this.id_sala = id_sala;
@@ -91,3 +108,4 @@ public class Obra{
         this.id_obra = id_obra;
     }
 }
+

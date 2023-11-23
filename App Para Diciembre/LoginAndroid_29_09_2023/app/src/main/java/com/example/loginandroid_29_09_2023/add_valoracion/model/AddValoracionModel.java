@@ -21,21 +21,21 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddValoracionModel implements ContractAddValoracion.Model {
-    private static final String IP_BASE = "192.168.104.77:8080";
-    //private static final String IP_BASE = "192.168.1.48:8080";
+    //private static final String IP_BASE = "192.168.104.77:8080";
+    private static final String IP_BASE = "192.168.1.48:8080";
     private AddValoracionPresenter presenter;
     public AddValoracionModel(AddValoracionPresenter presenter){
         this.presenter = presenter;
     }
 
     @Override
-    public void addValoracionAPI(int id_user, int id_obra, float puntuacion, ContractAddValoracion.Model.OnAddValoracionListener onAddValoracionListener) {
+    public void addValoracionAPI(int id_user, int id_obra, int puntuacion, ContractAddValoracion.Model.OnAddValoracionListener onAddValoracionListener) {
         // Crear una instancia de ApiService
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").
                 create(ApiService.class);
 
         // Realizar la solicitud al Servlet
-        Call<DataValoracion> call = apiService.addValoracion("OBRA.ADD", id_user, id_obra, puntuacion);
+        Call<DataValoracion> call = apiService.addValoracion("VALORACION.ADD", id_user, id_obra, puntuacion);
         call.enqueue(new Callback<DataValoracion>() {
             @Override
             public void onResponse(Call<DataValoracion> call, Response<DataValoracion> response) {

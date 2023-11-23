@@ -22,7 +22,7 @@ public class ValoracionDAO{
     }
 
 
-    public Mensaje addValoracion(int id_user, int id_obra, float puntuacion) {
+    public Mensaje addValoracion(int id_user, int id_obra, int puntuacion) {
 
         Mensaje mensajes = new Mensaje();
         String sql = SQL_FIND_ALL;
@@ -34,13 +34,13 @@ public class ValoracionDAO{
             ResultSet rs = motorSql.executeQuery(sql);
 
             while (rs.next()) {
-                if (rs.getString(2).equals(id_user) && rs.getString(3).equals(id_obra)) {
+                if (rs.getInt(2) == id_user && rs.getInt(3) == id_obra) {
                     coincidencia = true;
                 }
             }
             if (!coincidencia) {
                 sql = SQL_INSERT;
-                sql += "VALUES ("+id_user+","+id_obra+","+puntuacion+",NOW())";
+                sql += "("+id_user+","+id_obra+","+puntuacion+",NOW())";
                 int resp = this.motorSql.execute(sql);
                 mensajes.setMensaje("Valoracion Añadida");
             }

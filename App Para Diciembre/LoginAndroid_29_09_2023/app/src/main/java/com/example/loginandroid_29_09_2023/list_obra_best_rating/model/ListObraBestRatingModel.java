@@ -1,11 +1,11 @@
-package com.example.loginandroid_29_09_2023.lista_obra_most_sell.model;
+package com.example.loginandroid_29_09_2023.list_obra_best_rating.model;
 
 import android.util.Log;
 
 import com.example.loginandroid_29_09_2023.add_obra.data.DataObras;
 import com.example.loginandroid_29_09_2023.beans.Obra;
-import com.example.loginandroid_29_09_2023.lista_obra_most_sell.ContractListObraMostSell;
-import com.example.loginandroid_29_09_2023.lista_obra_most_sell.presenter.ListObraMostSellPresenter;
+import com.example.loginandroid_29_09_2023.list_obra_best_rating.ContractListObraBestRating;
+import com.example.loginandroid_29_09_2023.list_obra_best_rating.presenter.ListObraBestRatingPresenter;
 import com.example.loginandroid_29_09_2023.utils.ApiService;
 import com.example.loginandroid_29_09_2023.utils.RetrofitCliente;
 
@@ -16,23 +16,23 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListObraMostSellModel implements ContractListObraMostSell.Model {
-    //private static final String IP_BASE = "192.168.104.77:8080";
-    private static final String IP_BASE = "192.168.1.48:8080";
-    private ListObraMostSellPresenter presenter;
+public class ListObraBestRatingModel implements ContractListObraBestRating.Model {
+    private static final String IP_BASE = "192.168.104.77:8080";
+    //private static final String IP_BASE = "192.168.1.48:8080";
+    private ListObraBestRatingPresenter presenter;
 
-    public ListObraMostSellModel(ListObraMostSellPresenter presenter) {
+    public ListObraBestRatingModel(ListObraBestRatingPresenter presenter) {
         this.presenter = presenter;
     }
 
     @Override
-    public void listObraMostSellAPI(OnListObraMostSellListener onListObraMostSellListener) {
+    public void listObraBestRatingAPI(OnListObraBestRatingListener onListObraBestRatingListener) {
         // Crear una instancia de ApiService
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").
                 create(ApiService.class);
 
         // Realizar la solicitud al Servlet
-        Call<DataObras> call = apiService.listObrasMostSell("OBRA.LISTMOSTSELL");
+        Call<DataObras> call = apiService.listObrasBestRating("OBRA.LISTBESTRATING");
         call.enqueue(new Callback<DataObras>() {
             @Override
             public void onResponse(Call<DataObras> call, Response<DataObras> response) {
@@ -40,7 +40,7 @@ public class ListObraMostSellModel implements ContractListObraMostSell.Model {
                     DataObras dataObras = response.body();
                     ArrayList<Obra> listObras = dataObras.getObrasList();
                     try {
-                        onListObraMostSellListener.onFinished(listObras);
+                        onListObraBestRatingListener.onFinished(listObras);
                     } catch (IndexOutOfBoundsException e) {
                     }
 

@@ -1,56 +1,41 @@
 package model;
 
-
 public class Obra{
+    private Integer id_obra;
     private String titulo;
     private String descripcion;
     private String img;
-    private float precio;
-    private int id_obra;
-    private int id_sala;
+    private Float precio;
+    private Integer id_sala;
     private String fechaActuacion;
-    private float valoracionMedia;
+    private Integer valoracionMedia;
+    private Integer edadRecomendada;
+    private String genero;
 
-
-    public Obra(String titulo, String descripcion, String img, float precio, int id_obra, int id_sala, String fechaActuacion, float valoracionMedia) {
+    public Obra(Integer id_obra, String titulo, String descripcion, String img, Float precio, Integer id_sala, String fechaActuacion, Integer valoracionMedia, Integer edadRecomendada, String genero) {
+        this.id_obra = id_obra;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.img = img;
         this.precio = precio;
-        this.id_obra = id_obra;
         this.id_sala = id_sala;
         this.fechaActuacion = fechaActuacion;
         this.valoracionMedia = valoracionMedia;
-    }
-
-    public int getId_sala() {
-        return id_sala;
-    }
-
-    public void setvaloracionMedia(float valoracionMedia) {
-        this.valoracionMedia = valoracionMedia;
-    }
-
-    public float getvaloracionMedia() {
-        return valoracionMedia;
-    }
-
-    public void setId_sala(int id_sala) {
-        this.id_sala = id_sala;
-    }
-
-    public String getFechaActuacion() {
-        return fechaActuacion;
-    }
-
-    public void setFechaActuacion(String fechaActuacion) {
-        this.fechaActuacion = fechaActuacion;
+        this.edadRecomendada = edadRecomendada;
+        this.genero = genero;
     }
 
     public Obra() {
     }
 
-    // Getters y setters
+    public Integer getId_obra() {
+        return id_obra;
+    }
+
+    public void setId_obra(Integer id_obra) {
+        this.id_obra = id_obra;
+    }
+
     public String getTitulo() {
         return titulo;
     }
@@ -74,19 +59,52 @@ public class Obra{
     public void setImg(String img) {
         this.img = img;
     }
-    public float getPrecio() {
+
+    public Float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(Float precio) {
         this.precio = precio;
     }
 
-    public int getId_obra() {
-        return id_obra;
+    public Integer getId_sala() {
+        return id_sala;
     }
 
-    public void setId_obra(int id_obra) {
-        this.id_obra = id_obra;
+    public void setId_sala(Integer id_sala) {
+        this.id_sala = id_sala;
+    }
+
+    public String getFechaActuacion() {
+        return fechaActuacion;
+    }
+
+    public void setFechaActuacion(String fechaActuacion) {
+        this.fechaActuacion = fechaActuacion;
+    }
+
+    public Integer getValoracionMedia() {
+        return valoracionMedia;
+    }
+
+    public void setValoracionMedia(Integer valoracionMedia) {
+        this.valoracionMedia = valoracionMedia;
+    }
+
+    public Integer getEdadRecomendada() {
+        return edadRecomendada;
+    }
+
+    public void setEdadRecomendada(Integer edadRecomendada) {
+        this.edadRecomendada = edadRecomendada;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 }

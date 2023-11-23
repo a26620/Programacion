@@ -2,22 +2,20 @@ package com.example.loginandroid_29_09_2023;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import com.example.loginandroid_29_09_2023.beans.User;
-import com.example.loginandroid_29_09_2023.login_user.ContractLoginUser;
-import com.example.loginandroid_29_09_2023.login_user.presenter.LoginUserPresenter;
 import com.example.loginandroid_29_09_2023.login_user.view.LoginUserM;
 
 
 public class MainActivity extends AppCompatActivity{
     private static final long SPLASH_DISPLAY_LENGTH = 3000;
+    SharedPreferences sharedPreferencesUserCFG;
+    private boolean isLoggedIn(){
+        return sharedPreferencesUserCFG.getBoolean("isLoggedIn", false);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +26,15 @@ public class MainActivity extends AppCompatActivity{
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
+                sharedPreferencesUserCFG = getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
+
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(MainActivity.this,
-                        LoginUserM.class);
+                Intent mainIntent;
+                if (!isLoggedIn()){
+                    mainIntent = new Intent(MainActivity.this, LoginUserM.class);
+                }else{
+                    mainIntent = new Intent(MainActivity.this, Home.class);
+                }
                 startActivity(mainIntent);
                 MainActivity.this.finish();
             }
