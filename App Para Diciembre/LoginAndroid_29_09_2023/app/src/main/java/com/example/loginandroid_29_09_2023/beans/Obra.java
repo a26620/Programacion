@@ -1,19 +1,19 @@
 package com.example.loginandroid_29_09_2023.beans;
 
 public class Obra{
-    private int id_obra;
+    private Integer id_obra;
     private String titulo;
     private String descripcion;
     private String img;
-    private float precio;
-    private int id_sala;
+    private Float precio;
+    private Integer id_sala;
     private String fechaActuacion;
-    private int valoracionMedia;
-    private int edadRecomendada;
+    private Integer valoracionMedia;
+    private Integer edadRecomendada;
     private String genero;
+    private Integer duracion;
 
-
-    public Obra(int id_obra, String titulo, String descripcion, String img, float precio, int id_sala, String fechaActuacion, int valoracionMedia, int edadRecomendada, String genero) {
+    public Obra(Integer id_obra, String titulo, String descripcion, String img, Float precio, Integer id_sala, String fechaActuacion, Integer valoracionMedia, Integer edadRecomendada, String genero, Integer duracion) {
         this.id_obra = id_obra;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -24,51 +24,28 @@ public class Obra{
         this.valoracionMedia = valoracionMedia;
         this.edadRecomendada = edadRecomendada;
         this.genero = genero;
+        this.duracion = duracion;
     }
 
-    public int getValoracionMedia() {
-        return valoracionMedia;
+    public Integer getDuracion() {
+        return duracion;
     }
 
-    public void setValoracionMedia(int valoracionMedia) {
-        this.valoracionMedia = valoracionMedia;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-    public int getEdadRecomendada() {
-        return edadRecomendada;
-    }
-
-    public void setEdadRecomendada(int edadRecomendada) {
-        this.edadRecomendada = edadRecomendada;
-    }
-
-    public int getId_sala() {
-        return id_sala;
-    }
-
-
-    public void setId_sala(int id_sala) {
-        this.id_sala = id_sala;
-    }
-
-    public String getFechaActuacion() {
-        return fechaActuacion;
-    }
-
-    public void setFechaActuacion(String fechaActuacion) {
-        this.fechaActuacion = fechaActuacion;
+    public void setDuracion(Integer duracion) {
+        this.duracion = duracion;
     }
 
     public Obra() {
     }
 
-    // Getters y setters
+    public Integer getId_obra() {
+        return id_obra;
+    }
+
+    public void setId_obra(Integer id_obra) {
+        this.id_obra = id_obra;
+    }
+
     public String getTitulo() {
         return titulo;
     }
@@ -92,20 +69,52 @@ public class Obra{
     public void setImg(String img) {
         this.img = img;
     }
-    public float getPrecio() {
+
+    public Float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(Float precio) {
         this.precio = precio;
     }
 
-    public int getId_obra() {
-        return id_obra;
+    public Integer getId_sala() {
+        return id_sala;
     }
 
-    public void setId_obra(int id_obra) {
-        this.id_obra = id_obra;
+    public void setId_sala(Integer id_sala) {
+        this.id_sala = id_sala;
+    }
+
+    public String getFechaActuacion() {
+        return fechaActuacion;
+    }
+
+    public void setFechaActuacion(String fechaActuacion) {
+        this.fechaActuacion = fechaActuacion;
+    }
+
+    public Integer getValoracionMedia() {
+        return valoracionMedia;
+    }
+
+    public void setValoracionMedia(Integer valoracionMedia) {
+        this.valoracionMedia = valoracionMedia;
+    }
+
+    public Integer getEdadRecomendada() {
+        return edadRecomendada;
+    }
+
+    public void setEdadRecomendada(Integer edadRecomendada) {
+        this.edadRecomendada = edadRecomendada;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 }
-

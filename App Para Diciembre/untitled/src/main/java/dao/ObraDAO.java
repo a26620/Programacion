@@ -188,7 +188,7 @@ public class ObraDAO{
 
         String sql = "SELECT o.id_obra, o.titulo, o.descripcion, o.precio, " +
                 "COALESCE(ROUND(AVG(v.puntuacion), 0), 0) AS valoracion_media, " +
-                "g.nombre AS nombre_genero, o.edadRecomendada " +
+                "g.nombre AS nombre_genero, o.edadRecomendada, o.duracion " +
                 "FROM OBRA o " +
                 "LEFT JOIN VALORACION v ON o.id_obra = v.id_obra " +
                 "LEFT JOIN GENERO g ON o.id_genero = g.id_genero " +
@@ -210,6 +210,7 @@ public class ObraDAO{
                 obra.setValoracionMedia(rs.getInt(5));
                 obra.setGenero(rs.getString(6));
                 obra.setEdadRecomendada(rs.getInt(7));
+                obra.setDuracion(rs.getInt(8));
                 obras.add(obra);
 
             }

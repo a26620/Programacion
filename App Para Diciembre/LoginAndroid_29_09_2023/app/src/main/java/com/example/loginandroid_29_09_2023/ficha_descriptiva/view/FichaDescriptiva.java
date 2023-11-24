@@ -37,6 +37,7 @@ public class FichaDescriptiva extends AppCompatActivity implements ContractAddVa
     private TextView txtValoracionMedia;
     private TextView txtEdadRecomendada;
     private TextView txtGenero;
+    private TextView txtDuracion;
     private ImageView estrella1;
     private ImageView estrella2;
     private ImageView estrella3;
@@ -64,6 +65,7 @@ public class FichaDescriptiva extends AppCompatActivity implements ContractAddVa
         txtValoracionMedia = findViewById(R.id.txtValoracionMedia);
         txtEdadRecomendada = findViewById(R.id.txtEdadRecomendada);
         txtGenero = findViewById(R.id.txtGenero);
+        txtDuracion = findViewById(R.id.txtDuracion);
 
 
 
@@ -147,8 +149,9 @@ public class FichaDescriptiva extends AppCompatActivity implements ContractAddVa
         txtDescripcion.setText(obra.getDescripcion());
         txtPrecio.setText(obra.getPrecio() +" €");
         txtValoracionMedia.setText(String.valueOf(obra.getValoracionMedia()) + "/5");
-        txtEdadRecomendada.setText(String.valueOf(obra.getEdadRecomendada()));
+        txtEdadRecomendada.setText("+"+String.valueOf(obra.getEdadRecomendada()));
         txtGenero.setText(obra.getGenero());
+        txtDuracion.setText("("+String.valueOf(obra.getDuracion()) + "min )");
     }
 
     @Override

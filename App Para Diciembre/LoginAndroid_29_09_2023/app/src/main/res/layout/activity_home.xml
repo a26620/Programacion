@@ -14,11 +14,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/textView10"
+            android:layout_width="375dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="BARRA CON SIMBOLO DE LOG OUT Y TAL" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="375dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:text="BARRA DE BUSQUEDA" />
+
+        <TextView
             android:id="@+id/txtMostSell"
             android:layout_width="375dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="100dp"
             android:layout_marginBottom="16dp"
             android:text="Obras Mas Populares"
             android:textSize="20sp"
@@ -54,7 +67,61 @@
             android:id="@+id/listaBestRating"
             android:layout_width="375dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:id="@+id/txtMasObras"
+            android:layout_width="375dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:text="Más Obras"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/listaObrasAdmin2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView" />
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/filtroicono" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="450dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
 
 
     </LinearLayout>

@@ -25,6 +25,7 @@ CREATE TABLE OBRA (
     fechaActuacion DATE,
     edadRecomendada INT,
     id_genero INT,
+    duracion INT,
     PRIMARY KEY (id_obra),
     FOREIGN KEY (id_sala) REFERENCES SALA(id_sala),
     FOREIGN KEY (id_genero) REFERENCES GENERO(id_genero),
@@ -105,39 +106,40 @@ INSERT INTO SALA (nombre, capacidad) VALUES
 
 
 -- Insertar obras con referencia a la tabla de géneros --
-INSERT INTO OBRA (titulo, descripcion, img, precio, id_sala, fechaActuacion, edadRecomendada, id_genero)
+INSERT INTO OBRA (titulo, descripcion, img, precio, id_sala, fechaActuacion, edadRecomendada, id_genero, duracion)
 VALUES 
-('El Rey Lear', 'Tragedia de William Shakespeare.', 'reylear.jpg', 23.00, 1, '2023-12-01', 16, 1),
-('Cabaret', 'Musical basado en la novela de Christopher Isherwood.', 'cabaret.jpg', 27.50, 3, '2023-12-05', 18, 2),
-('La Flauta Mágica', 'Ópera de Wolfgang Amadeus Mozart.', 'flauta.jpg', 31.00, 4, '2023-12-10', 12, 4),
-('West Side Story', 'Musical sobre rivalidad entre pandillas.', 'westside.jpg', 25.00, 2, '2023-12-15', 16, 2),
-('La Cenicienta', 'Clásico cuento de hadas en versión teatral.', 'cenicienta.jpg', 20.00, 5, '2023-12-20', 0, 3);
+('El Rey Lear', 'Tragedia de William Shakespeare.', 'reylear.jpg', 23.00, 1, '2023-12-01', 16, 1, 150),
+('Cabaret', 'Musical basado en la novela de Christopher Isherwood.', 'cabaret.jpg', 27.50, 3, '2023-12-05', 18, 2, 120),
+('La Flauta Mágica', 'Ópera de Wolfgang Amadeus Mozart.', 'flauta.jpg', 31.00, 4, '2023-12-10', 12, 4, 180),
+('West Side Story', 'Musical sobre rivalidad entre pandillas.', 'westside.jpg', 25.00, 2, '2023-12-15', 16, 2, 135),
+('La Cenicienta', 'Clásico cuento de hadas en versión teatral.', 'cenicienta.jpg', 20.00, 5, '2023-12-20', 0, 3, 105);
 
 -- Insertar obras adicionales - Parte 2 --
-INSERT INTO OBRA (titulo, descripcion, img, precio, id_sala, fechaActuacion, edadRecomendada, id_genero)
+INSERT INTO OBRA (titulo, descripcion, img, precio, id_sala, fechaActuacion, edadRecomendada, id_genero, duracion)
 VALUES 
-('Carmen', 'Ópera de Georges Bizet.', 'carmen.jpg', 29.50, 6, '2023-12-25', 12, 4),
-('Grease', 'Musical ambientado en los años 50.', 'grease.jpg', 26.00, 1, '2023-12-02', 7, 2),
-('La Bohème', 'Ópera de Giacomo Puccini.', 'boheme.jpg', 28.00, 3, '2023-12-06', 16, 4),
-('El Diluvio que Viene', 'Musical español de Soler y Garrido.', 'diluvio.jpg', 30.00, 4, '2023-12-11', 18, 2),
-('Annie', 'Musical sobre la huérfana Annie.', 'annie.jpg', 22.50, 2, '2023-12-16', 0, 2);
+('Carmen', 'Ópera de Georges Bizet.', 'carmen.jpg', 29.50, 6, '2023-12-25', 12, 4, 165),
+('Grease', 'Musical ambientado en los años 50.', 'grease.jpg', 26.00, 1, '2023-12-02', 7, 2, 100),
+('La Bohème', 'Ópera de Giacomo Puccini.', 'boheme.jpg', 28.00, 3, '2023-12-06', 16, 4, 150),
+('El Diluvio que Viene', 'Musical español de Soler y Garrido.', 'diluvio.jpg', 30.00, 4, '2023-12-11', 18, 2, 180),
+('Annie', 'Musical sobre la huérfana Annie.', 'annie.jpg', 22.50, 2, '2023-12-16', 0, 2, 120);
 
 -- Insertar obras adicionales - Parte 3 --
-INSERT INTO OBRA (titulo, descripcion, img, precio, id_sala, fechaActuacion, edadRecomendada, id_genero)
+INSERT INTO OBRA (titulo, descripcion, img, precio, id_sala, fechaActuacion, edadRecomendada, id_genero, duracion)
 VALUES 
-('El Lago de los Cisnes', 'Ballet clásico de Piotr Ilich Chaikovski.', 'cisnes.jpg', 33.00, 5, '2023-12-21', 7, 3),
-('Les Misérables', 'Musical basado en la novela de Victor Hugo.', 'lesmiserables.jpg', 27.50, 6, '2023-12-26', 16, 2),
-('La Traviata', 'Ópera de Giuseppe Verdi.', 'traviata2.jpg', 30.50, 1, '2023-12-03', 18, 4),
-('Matilda', 'Musical basado en el libro de Roald Dahl.', 'matilda.jpg', 24.50, 3, '2023-12-07', 12, 2),
-('La Sirenita', 'Versión teatral del cuento de Hans Christian Andersen.', 'sirenita.jpg', 21.00, 4, '2023-12-12', 0, 1);
+('El Lago de los Cisnes', 'Ballet clásico de Piotr Ilich Chaikovski.', 'cisnes.jpg', 33.00, 5, '2023-12-21', 7, 3, 135),
+('Les Misérables', 'Musical basado en la novela de Victor Hugo.', 'lesmiserables.jpg', 27.50, 6, '2023-12-26', 16, 2, 150),
+('La Traviata', 'Ópera de Giuseppe Verdi.', 'traviata2.jpg', 30.50, 1, '2023-12-03', 18, 4, 180),
+('Matilda', 'Musical basado en el libro de Roald Dahl.', 'matilda.jpg', 24.50, 3, '2023-12-07', 12, 2, 105),
+('La Sirenita', 'Versión teatral del cuento de Hans Christian Andersen.', 'sirenita.jpg', 21.00, 4, '2023-12-12', 0, 1, 90);
 
 -- Insertar obras adicionales - Parte 4 --
-INSERT INTO OBRA (titulo, descripcion, img, precio, id_sala, fechaActuacion, edadRecomendada, id_genero)
+INSERT INTO OBRA (titulo, descripcion, img, precio, id_sala, fechaActuacion, edadRecomendada, id_genero, duracion)
 VALUES 
-('El Barbero de Sevilla', 'Ópera de Gioachino Rossini.', 'barberosevilla.jpg', 26.00, 2, '2023-12-17', 16, 4),
-('La Jaula de las Locas', 'Musical sobre un club nocturno gay.', 'jaula.jpg', 29.00, 5, '2023-12-22', 18, 2),
-('La Novicia Rebelde', 'Musical sobre la familia Von Trapp.', 'noviciarebelde.jpg', 25.00, 6, '2023-12-27', 12, 2),
-('Cats', 'Musical de Andrew Lloyd Webber basado en T.S. Eliot.', 'cats2.jpg', 27.50, 3, '2023-12-08', 16, 1);
+('El Barbero de Sevilla', 'Ópera de Gioachino Rossini.', 'barberosevilla.jpg', 26.00, 2, '2023-12-17', 16, 4, 120),
+('La Jaula de las Locas', 'Musical sobre un club nocturno gay.', 'jaula.jpg', 29.00, 5, '2023-12-22', 18, 2, 150),
+('La Novicia Rebelde', 'Musical sobre la familia Von Trapp.', 'noviciarebelde.jpg', 25.00, 6, '2023-12-27', 12, 2, 105),
+('Cats', 'Musical de Andrew Lloyd Webber basado en T.S. Eliot.', 'cats2.jpg', 27.50, 3, '2023-12-08', 16, 1, 150);
+
 
 
 
