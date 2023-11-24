@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.loginandroid_29_09_2023.R;
 import com.example.loginandroid_29_09_2023.beans.Obra;
-import com.example.loginandroid_29_09_2023.ficha_descriptiva.FichaDescriptiva;
+import com.example.loginandroid_29_09_2023.ficha_descriptiva.view.FichaDescriptiva;
 
 import java.util.ArrayList;
 
@@ -40,18 +40,8 @@ public class listaMostSellObra extends RecyclerView.Adapter<listaMostSellObra.Ob
         holder.itemView.setOnClickListener(v -> {
             Obra obra = lstObra.get(position);
             int id_obra = obra.getId_obra();
-            String titulo = obra.getTitulo();
-            String descripcion = obra.getDescripcion();
-            Float precio = obra.getPrecio();
-            int valoracionMedia = obra.getValoracionMedia();
-            int edadRecomendada = obra.getEdadRecomendada();
             Intent intent = new Intent(holder.itemView.getContext(), FichaDescriptiva.class);
             intent.putExtra("id_obra", id_obra);
-            intent.putExtra("titulo", titulo);
-            intent.putExtra("descripcion", descripcion);
-            intent.putExtra("precio", precio);
-            intent.putExtra("valoracionMedia", valoracionMedia);
-            intent.putExtra("edadRecomendada", edadRecomendada);
             context.startActivity(intent);
         });
     }

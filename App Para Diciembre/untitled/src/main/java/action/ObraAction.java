@@ -34,7 +34,9 @@ public class ObraAction implements IAction {
             case "LISTFILTER":
                 //pagDestino = listfilterAction(request, response);
                 break;
-        }
+            case "FICHADESCRIPTIVA":
+                pagDestino = fichaDescriptivaAction(request, response);
+                break;        }
         System.out.println(pagDestino);
         return pagDestino;
     }
@@ -113,6 +115,26 @@ public class ObraAction implements IAction {
         ObraDAO obraDAO = new ObraDAO();
 
         ArrayList<Obra> lstObra = obraDAO.listfilter(request.getParameter("ID_GENERO"),request.getParameter("FECHA_ACTUACION"),Integer.parseInt(request.getParameter("EDAD_RECOMENDADA")));
+
+        String jsonObra = "";
+        Gson gson = new Gson();
+        jsonObra += "{\"message\": \"Esto es un mensaje de ejemplo\"," +
+                "\"obrasList\": [";
+        for (Obra obra:lstObra) {
+            jsonObra += gson.toJson(obra) + ", ";
+        }
+        jsonObra = jsonObra.substring(0, jsonObra.length()-2);
+        jsonObra += "]}";
+        return jsonObra;
+    }
+
+    private String fichaDescriptivaAction(HttpServletRequest request,
+                                          HttpServletResponse response) {
+        System.out.println("ESTOYYY");
+
+        ObraDAO obraDAO = new ObraDAO();
+
+        ArrayList<Obra> lstObra = obraDAO.fichaDescriptiva(Integer.parseInt(request.getParameter("ID_OBRA")));
 
         String jsonObra = "";
         Gson gson = new Gson();

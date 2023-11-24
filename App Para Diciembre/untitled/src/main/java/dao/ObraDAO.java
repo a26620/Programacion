@@ -73,28 +73,11 @@ public class ObraDAO{
 
         ArrayList<Obra> obras = new ArrayList<>();
 
-        String sql = "SELECT \n" +
-                "    OBRA.id_obra, \n" +
-                "    OBRA.titulo, \n" +
-                "    OBRA.descripcion, \n" +
-                "    OBRA.img, \n" +
-                "    OBRA.precio, \n" +
-                "    OBRA.edadRecomendada, \n" +
-                "    OBRA.id_genero, \n" +
-                "    GENERO.nombre AS nombre_genero, \n" +
-                "    COUNT(COMPRA.id_obra) AS cantidad_vendida,\n" +
-                "    COALESCE(\n" +
-                "        (\n" +
-                "            SELECT ROUND(AVG(puntuacion), 1) \n" +
-                "            FROM VALORACION \n" +
-                "            WHERE id_obra = OBRA.id_obra\n" +
-                "        ), 0\n" +
-                "    ) AS puntuacion_media\n" +
-                "FROM OBRA\n" +
-                "LEFT JOIN COMPRA ON OBRA.id_obra = COMPRA.id_obra\n" +
-                "LEFT JOIN GENERO ON OBRA.id_genero = GENERO.id_genero\n" +
-                "GROUP BY OBRA.id_obra, OBRA.titulo, OBRA.img\n" +
-                "ORDER BY cantidad_vendida DESC LIMIT 10;\n";
+        String sql = "SELECT o.id_obra, o.titulo, COUNT(c.id_obra) AS cantidad_vendida " +
+                "FROM OBRA o " +
+                "LEFT JOIN COMPRA c ON o.id_obra = c.id_obra " +
+                "GROUP BY o.id_obra, o.titulo " +
+                "ORDER BY cantidad_vendida DESC LIMIT 10";
 
         System.out.println(sql);
 
@@ -110,12 +93,6 @@ public class ObraDAO{
 
                 obra.setId_obra(rs.getInt(1));
                 obra.setTitulo(rs.getString(2));
-                obra.setDescripcion(rs.getString(3));
-                obra.setImg(rs.getString(4));
-                obra.setPrecio(rs.getFloat(5));
-                obra.setEdadRecomendada(rs.getInt(6));
-                obra.setGenero(rs.getString(8));
-                obra.setValoracionMedia(rs.getInt(10));
                 obras.add(obra);
 
             }
@@ -172,10 +149,16 @@ public class ObraDAO{
 
         ArrayList<Obra> obras = new ArrayList<>();
 
-        String sql = "SELECT o.id_obra, o.titulo, o.img, ROUND(AVG(v.puntuacion), 1) AS puntuacion_media FROM OBRA o \n" +
-                "JOIN VALORACION v ON o.id_obra = v.id_obra \n" +
-                "GROUP BY o.id_obra, o.titulo, o.img \n" +
-                "ORDER BY puntuacion_media DESC LIMIT 10;";
+        String sql = "SELECT o.id_obra, o.titulo, CASE " +
+                "WHEN AVG(v.puntuacion) IS NULL THEN 0 " +
+                "ELSE ROUND(AVG(v.puntuacion), 0) " +
+                "END AS puntuacion_media " +
+                "FROM OBRA o " +
+                "LEFT JOIN VALORACION v ON o.id_obra = v.id_obra " +
+                "GROUP BY o.id_obra, o.titulo " +
+                "ORDER BY puntuacion_media DESC LIMIT 10";;
+
+
         try {
             motorSql.connect();
             ResultSet rs = motorSql.executeQuery(sql);
@@ -187,7 +170,46 @@ public class ObraDAO{
                 obra.setId_obra(rs.getInt(1));
                 obra.setTitulo(rs.getString(2));
                 obra.setImg(rs.getString(3));
-                obra.setValoracionMedia(rs.getInt(4));
+                obras.add(obra);
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            motorSql.disconnect();
+        }
+        return obras;
+
+    }
+
+    public ArrayList<Obra> fichaDescriptiva(int id_obra) {
+
+        ArrayList<Obra> obras = new ArrayList<>();
+
+        String sql = "SELECT o.id_obra, o.titulo, o.descripcion, o.precio, " +
+                "COALESCE(ROUND(AVG(v.puntuacion), 0), 0) AS valoracion_media, " +
+                "g.nombre AS nombre_genero, o.edadRecomendada " +
+                "FROM OBRA o " +
+                "LEFT JOIN VALORACION v ON o.id_obra = v.id_obra " +
+                "LEFT JOIN GENERO g ON o.id_genero = g.id_genero " +
+                "WHERE o.id_obra = "+id_obra;
+
+
+        try {
+            motorSql.connect();
+            ResultSet rs = motorSql.executeQuery(sql);
+
+            while (rs.next()) {
+
+                Obra obra = new Obra();
+
+                obra.setId_obra(rs.getInt(1));
+                obra.setTitulo(rs.getString(2));
+                obra.setDescripcion(rs.getString(3));
+                obra.setPrecio(rs.getFloat(4));
+                obra.setValoracionMedia(rs.getInt(5));
+                obra.setGenero(rs.getString(6));
+                obra.setEdadRecomendada(rs.getInt(7));
                 obras.add(obra);
 
             }

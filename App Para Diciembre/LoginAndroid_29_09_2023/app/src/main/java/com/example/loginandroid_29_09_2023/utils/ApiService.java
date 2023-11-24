@@ -14,24 +14,24 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-      @Headers({
-              "Accept: application/json",
-              "Content-Type: application/json"
-      })
+    @Headers({
+            "Accept: application/json",
+            "Content-Type: application/json"
+    })
 
 
-      @GET("MyServlet")
-        Call<DataUsers> loginUser(@Query("ACTION") String action,
-                                    @Query("USER") String user,
-                                    @Query("PASS") String pass);
     @GET("MyServlet")
-        Call<DataObras> addObra(@Query("ACTION") String action,
-                                    @Query("TITULO") String user,
-                                    @Query("DESCRIPCION") String desc,
-                                    @Query("PRECIO") float precio,
-                                    @Query("IMG") String img,
-                                    @Query("ID_SALA") int id_sala,
-                                    @Query("FECHA") String fechaActuacion);
+    Call<DataUsers> loginUser(@Query("ACTION") String action,
+                              @Query("USER") String user,
+                              @Query("PASS") String pass);
+    @GET("MyServlet")
+    Call<DataObras> addObra(@Query("ACTION") String action,
+                            @Query("TITULO") String user,
+                            @Query("DESCRIPCION") String desc,
+                            @Query("PRECIO") float precio,
+                            @Query("IMG") String img,
+                            @Query("ID_SALA") int id_sala,
+                            @Query("FECHA") String fechaActuacion);
 
     @GET("MyServlet")
     Call<DataSalas> listSala(@Query("ACTION") String action);
@@ -57,6 +57,10 @@ public interface ApiService {
 
     @GET("MyServlet")
     Call<DataObras> listObrasBestRating(@Query("ACTION") String action);
+
+    @GET("MyServlet")
+    Call<DataObras> fichaDescriptiva(@Query("ACTION") String action,
+                                     @Query("ID_OBRA") int id_obra);
 
 
         /*@GET("MyServlet")
