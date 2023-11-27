@@ -32,7 +32,7 @@ public class ValoracionAction implements IAction {
                                HttpServletResponse response) {
         ValoracionDAO valoracionDAO = new ValoracionDAO();
 
-        Mensaje mensaje = valoracionDAO.addValoracion(Integer.parseInt(request.getParameter("ID_USER")),Integer.parseInt(request.getParameter("ID_OBRA")),Integer.parseInt(request.getParameter("PUNTUACION")));
+        Mensaje mensaje = valoracionDAO.addValoracion(Integer.parseInt(request.getParameter("ID_USER")),Integer.parseInt(request.getParameter("ID_OBRA")),Float.parseFloat(request.getParameter("PUNTUACION")));
 
         String jsonValoracion = "";
         Gson gson = new Gson();

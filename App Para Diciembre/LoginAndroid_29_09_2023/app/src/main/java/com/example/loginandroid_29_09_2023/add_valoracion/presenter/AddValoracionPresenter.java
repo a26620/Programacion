@@ -27,7 +27,7 @@ public class AddValoracionPresenter implements ContractAddValoracion.Presenter,C
 
     }
     @Override
-    public void addValoracion(int id_user, int id_obra, int puntuacion) {
+    public void addValoracion(int id_user, int id_obra, float puntuacion) {
         model.addValoracionAPI(id_user,id_obra,puntuacion, this);
     }
 }

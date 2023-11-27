@@ -22,7 +22,7 @@ public class ValoracionDAO{
     }
 
 
-    public Mensaje addValoracion(int id_user, int id_obra, int puntuacion) {
+    public Mensaje addValoracion(int id_user, int id_obra, float puntuacion) {
 
         Mensaje mensajes = new Mensaje();
         String sql = SQL_FIND_ALL;

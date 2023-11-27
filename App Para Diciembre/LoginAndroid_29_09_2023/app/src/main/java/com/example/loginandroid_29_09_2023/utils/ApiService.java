@@ -53,7 +53,7 @@ public interface ApiService {
     Call<DataValoracion> addValoracion(@Query("ACTION") String action,
                                        @Query("ID_USER") int id_genero,
                                        @Query("ID_OBRA") int id_obra,
-                                       @Query("PUNTUACION") int puntuacion);
+                                       @Query("PUNTUACION") float puntuacion);
 
     @GET("MyServlet")
     Call<DataObras> listObrasBestRating(@Query("ACTION") String action);

@@ -128,7 +128,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="1dp"
                         android:text="Filter"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
 
                     <ImageView
@@ -138,7 +138,8 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="2dp"
                         android:layout_weight="1"
-                        android:background="@drawable/filtroicono" />
+                        android:background="@drawable/filtroicono"
+                        android:backgroundTint="#FFFFFF" />
 
                 </LinearLayout>
 

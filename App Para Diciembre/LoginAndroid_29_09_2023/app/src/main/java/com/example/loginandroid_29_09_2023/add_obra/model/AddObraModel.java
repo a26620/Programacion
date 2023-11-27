@@ -21,8 +21,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddObraModel implements ContractAddObra.Model {
-    //private static final String IP_BASE = "192.168.104.77:8080";
-    private static final String IP_BASE = "192.168.1.48:8080";
+    private static final String IP_BASE = "192.168.104.77:8080";
+    //private static final String IP_BASE = "192.168.1.48:8080";
     private AddObraPresenter presenter;
     public AddObraModel(AddObraPresenter presenter){
         this.presenter = presenter;

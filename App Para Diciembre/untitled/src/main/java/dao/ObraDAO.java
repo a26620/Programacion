@@ -151,7 +151,7 @@ public class ObraDAO{
 
         String sql = "SELECT o.id_obra, o.titulo, CASE " +
                 "WHEN AVG(v.puntuacion) IS NULL THEN 0 " +
-                "ELSE ROUND(AVG(v.puntuacion), 0) " +
+                "ELSE ROUND(AVG(v.puntuacion), 2) " +
                 "END AS puntuacion_media " +
                 "FROM OBRA o " +
                 "LEFT JOIN VALORACION v ON o.id_obra = v.id_obra " +
@@ -187,7 +187,7 @@ public class ObraDAO{
         ArrayList<Obra> obras = new ArrayList<>();
 
         String sql = "SELECT o.id_obra, o.titulo, o.descripcion, o.precio, " +
-                "COALESCE(ROUND(AVG(v.puntuacion), 0), 0) AS valoracion_media, " +
+                "COALESCE(ROUND(AVG(v.puntuacion), 2), 0) AS valoracion_media, " +
                 "g.nombre AS nombre_genero, o.edadRecomendada, o.duracion " +
                 "FROM OBRA o " +
                 "LEFT JOIN VALORACION v ON o.id_obra = v.id_obra " +
@@ -207,7 +207,7 @@ public class ObraDAO{
                 obra.setTitulo(rs.getString(2));
                 obra.setDescripcion(rs.getString(3));
                 obra.setPrecio(rs.getFloat(4));
-                obra.setValoracionMedia(rs.getInt(5));
+                obra.setValoracionMedia(rs.getFloat(5));
                 obra.setGenero(rs.getString(6));
                 obra.setEdadRecomendada(rs.getInt(7));
                 obra.setDuracion(rs.getInt(8));
@@ -280,7 +280,7 @@ public class ObraDAO{
                 obra.setId_obra(rs.getInt(1));
                 obra.setTitulo(rs.getString(2));
                 obra.setImg(rs.getString(3));
-                obra.setValoracionMedia(rs.getInt(3));
+                obra.setValoracionMedia(rs.getFloat(3));
                 obras.add(obra);
 
             }

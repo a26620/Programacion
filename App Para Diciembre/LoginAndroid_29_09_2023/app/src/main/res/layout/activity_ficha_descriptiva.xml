@@ -71,40 +71,12 @@
                 android:layout_height="40dp"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/estrella1"
-                    android:layout_width="5dp"
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="213dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/nofav" />
-
-                <ImageView
-                    android:id="@+id/estrella2"
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/nofav" />
-
-                <ImageView
-                    android:id="@+id/estrella3"
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/nofav" />
-
-                <ImageView
-                    android:id="@+id/estrella4"
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/nofav" />
-
-                <ImageView
-                    android:id="@+id/estrella5"
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/nofav" />
+                    android:numStars="5" />
 
                 <TextView
                     android:id="@+id/textView14"
