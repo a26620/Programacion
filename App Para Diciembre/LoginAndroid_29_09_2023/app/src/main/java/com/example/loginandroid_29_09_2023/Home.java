@@ -4,19 +4,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.loginandroid_29_09_2023.adaptadores.listaBestRatingObra;
 import com.example.loginandroid_29_09_2023.adaptadores.listaMostSellObra;
+import com.example.loginandroid_29_09_2023.admin.view.AdminHome;
 import com.example.loginandroid_29_09_2023.beans.Obra;
 import com.example.loginandroid_29_09_2023.list_obra_best_rating.ContractListObraBestRating;
 import com.example.loginandroid_29_09_2023.list_obra_best_rating.presenter.ListObraBestRatingPresenter;
+import com.example.loginandroid_29_09_2023.list_sala.view.ListSala;
 import com.example.loginandroid_29_09_2023.lista_obra_most_sell.ContractListObraMostSell;
 import com.example.loginandroid_29_09_2023.lista_obra_most_sell.presenter.ListObraMostSellPresenter;
+import com.example.loginandroid_29_09_2023.login_user.view.LoginUserM;
 
 import java.util.ArrayList;
 
 public class Home extends AppCompatActivity implements ContractListObraMostSell.View, ContractListObraBestRating.View {
+
+
+    SharedPreferences sharedPreferencesUserCFG;
 
     private ListObraMostSellPresenter presenter =
             new ListObraMostSellPresenter(this);
@@ -26,6 +37,7 @@ public class Home extends AppCompatActivity implements ContractListObraMostSell.
 
     private RecyclerView listaMostSell;
     private RecyclerView listaBestRating;
+    private ImageView btnLogOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +47,25 @@ public class Home extends AppCompatActivity implements ContractListObraMostSell.
     }
 
     private void initComponents(){
+        sharedPreferencesUserCFG = getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
         presenter.listObraMostSell();
         presenter2.listObraBestRating();
         listaMostSell = findViewById(R.id.listaMostSell);
         listaBestRating = findViewById(R.id.listaBestRating);
+        btnLogOut = findViewById(R.id.btnLogOut);
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            SharedPreferences.Editor editor = sharedPreferencesUserCFG.edit();
+            editor.remove("isLoggedIn");
+            editor.remove("username");
+            editor.remove("id_user");
+            editor.apply();
+                Intent mainIntent = new Intent(Home.this,
+                        LoginUserM.class);
+                startActivity(mainIntent);
+            }
+        });
     }
 
     @Override
