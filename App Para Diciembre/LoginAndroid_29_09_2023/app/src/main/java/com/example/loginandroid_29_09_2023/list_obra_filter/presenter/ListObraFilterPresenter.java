@@ -1,5 +1,7 @@
 package com.example.loginandroid_29_09_2023.list_obra_filter.presenter;
 
+import android.util.Log;
+
 import com.example.loginandroid_29_09_2023.beans.Obra;
 import com.example.loginandroid_29_09_2023.list_obra_filter.ContractListObraFilter;
 import com.example.loginandroid_29_09_2023.list_obra_filter.model.ListObraFilterModel;
@@ -24,10 +26,11 @@ public class ListObraFilterPresenter implements ContractListObraFilter.Presenter
 
     @Override
     public void onFailure(String err) {
-
+        Log.e("onFailure: ","DENTROOOO" );
+        view.failurelistObrasFilter("");
     }
     @Override
-    public void listObraFilter(ArrayList<Integer> id_genero, int edadRecomendada) {
+    public void listObraFilter(ArrayList<Integer> id_genero, ArrayList<Integer> edadRecomendada) {
         model.listObraFilterAPI(id_genero, edadRecomendada,this);
     }
 }

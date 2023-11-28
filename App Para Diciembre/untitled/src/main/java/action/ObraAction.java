@@ -7,6 +7,7 @@ import model.Mensaje;
 import model.Obra;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -114,7 +115,8 @@ public class ObraAction implements IAction {
 
         ObraDAO obraDAO = new ObraDAO();
 
-        ArrayList<Obra> lstObra = obraDAO.listfilter(request.getParameter("ID_GENERO"),Integer.parseInt(request.getParameter("EDAD_RECOMENDADA")));
+
+        ArrayList<Obra> lstObra = obraDAO.listfilter(new String[]{request.getParameter("ID_GENERO")},new String[]{request.getParameter("EDAD_RECOMENDADA")});
 
         String jsonObra = "";
         Gson gson = new Gson();
@@ -130,7 +132,6 @@ public class ObraAction implements IAction {
 
     private String fichaDescriptivaAction(HttpServletRequest request,
                                           HttpServletResponse response) {
-        System.out.println("ESTOYYY");
 
         ObraDAO obraDAO = new ObraDAO();
 

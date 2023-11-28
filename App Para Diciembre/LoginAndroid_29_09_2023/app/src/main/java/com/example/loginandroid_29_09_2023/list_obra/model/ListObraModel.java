@@ -18,8 +18,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ListObraModel implements ContractListObra.Model {
-    private static final String IP_BASE = "192.168.104.77:8080";
-    //private static final String IP_BASE = "192.168.1.48:8080";
+    //private static final String IP_BASE = "192.168.104.77:8080";
+    private static final String IP_BASE = "192.168.1.48:8080";
     private ListObraPresenter presenter;
 
     public ListObraModel(ListObraPresenter presenter) {

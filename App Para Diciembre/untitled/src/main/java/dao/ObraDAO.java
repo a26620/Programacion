@@ -223,29 +223,29 @@ public class ObraDAO{
 
     }
 
-    public ArrayList<Obra> listfilter(ArrayList<Integer> id_generos, int edadRecomendada) {
+    public ArrayList<Obra> listfilter(String[] id_generos, String[] edadRecomendada) {
 
-        String[] id_generosA = null;
-
-        if(id_generos != null){
-            id_generosA = id_generos.split(",");
-        }
 
         ArrayList<Obra> obras = new ArrayList<>();
 
         String sql = SQL_FIND_ALL;
 
-        if (id_generosA != null) {
+        if (id_generos[0] != "") {
             sql += " AND id_genero IN(";
 
-            for(int i = 0;i < id_generosA.length; i++){
-                sql+= id_generosA[i]+", ";
+            for(int i = 0;i < id_generos.length; i++){
+                sql+= id_generos[i]+", ";
             }
             sql = sql.substring(0, sql.length()-2);
             sql += ")";
         }
-        if (edadRecomendada != 0) {
-            sql += " AND edadRecomendada = " + edadRecomendada;
+        if (edadRecomendada[0] != "") {
+            sql += " AND edadRecomendada IN(";
+            for(int i = 0;i < edadRecomendada.length; i++){
+                sql+= edadRecomendada[i]+", ";
+            }
+            sql = sql.substring(0, sql.length()-2);
+            sql += ")";
         }
 
         try {

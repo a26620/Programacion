@@ -1,5 +1,8 @@
 package com.example.loginandroid_29_09_2023.list_obra_filter;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+
+import com.example.loginandroid_29_09_2023.adaptadores.listaFilterObra;
 import com.example.loginandroid_29_09_2023.beans.Obra;
 
 import java.util.ArrayList;
@@ -7,12 +10,11 @@ import java.util.ArrayList;
 public interface ContractListObraFilter {
     public interface View{
         public void successlistObrasFilter(ArrayList<Obra> lstObra);
-        void failurelistObrasFilter(String err);
-        // void failureLogin(MyException err);
+        public void failurelistObrasFilter(String err);
     }
     public interface Presenter{
         // void login(String email, String pass);
-        void listObraFilter(ArrayList<Integer> id_genero,int edadRecomendada);
+        void listObraFilter(ArrayList<Integer> id_genero,ArrayList<Integer> edadRecomendada);
         // void login(ViewUser viewUser);
         // VIEW-ORM
         // BEANS-ENTITIES
@@ -23,6 +25,6 @@ public interface ContractListObraFilter {
             void onFinished(ArrayList<Obra> lstObra);
             void onFailure(String err);
         }
-        void listObraFilterAPI(ArrayList<Integer> id_genero,int edadRecomendada,OnListObraFilterListener onListObraFilterListener);
+        void listObraFilterAPI(ArrayList<Integer> id_genero,ArrayList<Integer> edadRecomendada,OnListObraFilterListener onListObraFilterListener);
     }
 }
