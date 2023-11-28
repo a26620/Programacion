@@ -32,7 +32,7 @@ public class ObraAction implements IAction {
                 pagDestino = listbestratingAction(request, response);
                 break;
             case "LISTFILTER":
-                //pagDestino = listfilterAction(request, response);
+                pagDestino = listfilterAction(request, response);
                 break;
             case "FICHADESCRIPTIVA":
                 pagDestino = fichaDescriptivaAction(request, response);
@@ -114,7 +114,7 @@ public class ObraAction implements IAction {
 
         ObraDAO obraDAO = new ObraDAO();
 
-        ArrayList<Obra> lstObra = obraDAO.listfilter(request.getParameter("ID_GENERO"),request.getParameter("FECHA_ACTUACION"),Integer.parseInt(request.getParameter("EDAD_RECOMENDADA")));
+        ArrayList<Obra> lstObra = obraDAO.listfilter(request.getParameter("ID_GENERO"),Integer.parseInt(request.getParameter("EDAD_RECOMENDADA")));
 
         String jsonObra = "";
         Gson gson = new Gson();

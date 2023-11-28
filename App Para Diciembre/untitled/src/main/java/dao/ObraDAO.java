@@ -223,47 +223,26 @@ public class ObraDAO{
 
     }
 
-    public ArrayList<Obra> listfilter(String id_generos, String fechaActuacion, int edadRecomendada) {
+    public ArrayList<Obra> listfilter(ArrayList<Integer> id_generos, int edadRecomendada) {
 
-        String[] fechaActuacionA = fechaActuacion.split(",");
-        String[] id_generosA = id_generos.split(",");
+        String[] id_generosA = null;
 
-        String fechaInsert1;
-        String fechaInsert2;
-
-        try {
-            SimpleDateFormat formatoFechaOriginal = new SimpleDateFormat("dd/MM/yyyy");
-            Date fecha1 = formatoFechaOriginal.parse(fechaActuacionA[0]);
-            SimpleDateFormat formatoFechaDeseada = new SimpleDateFormat("yyyy-MM-dd");
-            fechaInsert1 = formatoFechaDeseada.format(fecha1);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-
-        try {
-            SimpleDateFormat formatoFechaOriginal = new SimpleDateFormat("dd/MM/yyyy");
-            Date fecha2 = formatoFechaOriginal.parse(fechaActuacionA[1]);
-            SimpleDateFormat formatoFechaDeseada = new SimpleDateFormat("yyyy-MM-dd");
-            fechaInsert2 = formatoFechaDeseada.format(fecha2);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+        if(id_generos != null){
+            id_generosA = id_generos.split(",");
         }
 
         ArrayList<Obra> obras = new ArrayList<>();
 
         String sql = SQL_FIND_ALL;
 
-        if (id_generosA.length != 0) {
+        if (id_generosA != null) {
             sql += " AND id_genero IN(";
 
             for(int i = 0;i < id_generosA.length; i++){
-                sql+= id_generosA[i]+",";
+                sql+= id_generosA[i]+", ";
             }
             sql = sql.substring(0, sql.length()-2);
             sql += ")";
-        }
-        if (!fechaActuacion.isEmpty()) {
-            sql += " AND fechaActuacion BETWEEN '" + fechaInsert1 + "' AND '"+ fechaInsert2 +"'";
         }
         if (edadRecomendada != 0) {
             sql += " AND edadRecomendada = " + edadRecomendada;
@@ -279,8 +258,6 @@ public class ObraDAO{
 
                 obra.setId_obra(rs.getInt(1));
                 obra.setTitulo(rs.getString(2));
-                obra.setImg(rs.getString(3));
-                obra.setValoracionMedia(rs.getFloat(3));
                 obras.add(obra);
 
             }

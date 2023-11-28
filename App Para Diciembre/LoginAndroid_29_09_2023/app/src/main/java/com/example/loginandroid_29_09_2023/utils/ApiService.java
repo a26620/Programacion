@@ -46,7 +46,6 @@ public interface ApiService {
     @GET("MyServlet")
     Call<DataObras> listObrasFilter(@Query("ACTION") String action,
                                     @Query("ID_GENERO") ArrayList<Integer> id_genero,
-                                    @Query("FECHA_ACTUACION") ArrayList<String> fechaActuacion,
                                     @Query("EDAD_RECOMENDADA") int edadRecomendada);
 
     @GET("MyServlet")

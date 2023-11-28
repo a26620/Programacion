@@ -26,13 +26,14 @@ public class ListObraFilterModel implements ContractListObraFilter.Model {
     }
 
     @Override
-    public void listObraFilterAPI(ArrayList<Integer> id_genero, ArrayList<String> fechaActuacion, int edadRecomendada,OnListObraFilterListener onListObraFilterListener) {
+    public void listObraFilterAPI(ArrayList<Integer> id_genero, int edadRecomendada,OnListObraFilterListener onListObraFilterListener) {
         // Crear una instancia de ApiService
         ApiService apiService = RetrofitCliente.getClient("http://" + IP_BASE + "/untitled/").
                 create(ApiService.class);
 
         // Realizar la solicitud al Servlet
-        Call<DataObras> call = apiService.listObrasFilter("OBRA.LISTFILTER", id_genero, fechaActuacion, edadRecomendada);
+
+        Call<DataObras> call = apiService.listObrasFilter("OBRA.LISTFILTER", id_genero, edadRecomendada);
         call.enqueue(new Callback<DataObras>() {
             @Override
             public void onResponse(Call<DataObras> call, Response<DataObras> response) {

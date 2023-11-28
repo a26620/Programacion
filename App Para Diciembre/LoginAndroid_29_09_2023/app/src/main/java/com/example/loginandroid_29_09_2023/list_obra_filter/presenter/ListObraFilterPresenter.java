@@ -27,7 +27,7 @@ public class ListObraFilterPresenter implements ContractListObraFilter.Presenter
 
     }
     @Override
-    public void listObraFilter(ArrayList<Integer> id_genero,ArrayList<String> fechaActuacion,int edadRecomendada) {
-        model.listObraFilterAPI(id_genero, fechaActuacion, edadRecomendada,this);
+    public void listObraFilter(ArrayList<Integer> id_genero, int edadRecomendada) {
+        model.listObraFilterAPI(id_genero, edadRecomendada,this);
     }
 }

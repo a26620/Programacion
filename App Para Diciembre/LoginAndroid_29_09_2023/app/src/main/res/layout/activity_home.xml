@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home">
+    tools:context=".Home"
+    android:id="@+id/nestedScrollView"
+    tools:ignore="InvalidId">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,9 +65,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listaMostSell"
-            android:layout_width="375dp"
+            android:layout_width="380dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="end"
             android:layout_marginBottom="20dp"
             android:background="#00ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -86,9 +88,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listaBestRating"
-            android:layout_width="375dp"
+            android:layout_width="380dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="end"
             android:layout_marginBottom="20dp" />
 
         <TextView
@@ -106,51 +108,82 @@
 
         <LinearLayout
             android:layout_width="375dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="55dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/purple_700"
-                app:cardCornerRadius="20dp">
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/operaFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/purple_200"
+                    app:cardCornerRadius="5dp">
+
+                    <TextView
+                        android:id="@+id/textView99"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ópera" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/teatroFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/purple_200"
+                    app:cardCornerRadius="5dp">
 
                     <TextView
                         android:id="@+id/textView12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="1dp"
-                        android:text="Filter"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
+                        android:text="Teatro" />
+                </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="2dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/filtroicono"
-                        android:backgroundTint="#FFFFFF" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/musicalFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/purple_200"
+                    app:cardCornerRadius="5dp">
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Musical" />
+                </androidx.cardview.widget.CardView>
 
-            </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/balletFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/purple_200"
+                    app:cardCornerRadius="5dp">
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ballet" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listaFilter"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="#00ffffff" />
         </LinearLayout>
 
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
