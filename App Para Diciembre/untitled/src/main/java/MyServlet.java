@@ -1,7 +1,4 @@
-import action.ObraAction;
-import action.SalaAction;
-import action.UserAction;
-import action.ValoracionAction;
+import action.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,6 +36,9 @@ public class MyServlet extends HttpServlet {
                 break;
             case "VALORACION":
                 out.print(new ValoracionAction().execute(request, response));
+                break;
+            case "GENERO":
+                out.print(new GeneroAction().execute(request, response));
                 break;
         }
         out.print(answer);

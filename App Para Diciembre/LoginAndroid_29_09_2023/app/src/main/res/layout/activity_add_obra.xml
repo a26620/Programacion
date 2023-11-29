@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".add_obra.view.AddObra">
 
-    <EditText
+    <androidx.cardview.widget.CardView
         android:id="@+id/edtImagen"
-        android:layout_width="329dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="40dp"
-        android:hint="Imagen"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/edtTitulo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -34,46 +34,67 @@
         android:layout_below="@id/edtTitulo"
         android:layout_marginBottom="40dp"
         android:hint="Descripcion"
-        app:layout_constraintBottom_toTopOf="@+id/edtPrecio"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/edtPrecio"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="329dp"
         android:layout_height="55dp"
-        android:layout_below="@id/edtDescripcion"
-        android:layout_alignParentEnd="true"
         android:layout_marginBottom="40dp"
-        android:digits="0123456789."
-        android:hint="Precio"
-        android:inputType="numberDecimal"
-        android:maxLength="5"
-        app:layout_constraintBottom_toTopOf="@+id/edtFecha"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <EditText
-        android:id="@+id/edtFecha"
+        <Spinner
+            android:id="@+id/spinnerGenero"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_marginBottom="20dp"
+            android:padding="8dp"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spinnerEdad"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="329dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="40dp"
-        android:focusable="false"
-        android:hint="Seleccionar fecha"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerOptions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinnerOptions"
-        android:layout_width="329dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="40dp"
-        android:padding="8dp"
-        android:textSize="16sp"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/btnAddObra"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/edtPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/edtDescripcion"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="50dp"
+            android:digits="0123456789."
+            android:hint="Precio"
+            android:inputType="numberDecimal"
+            android:maxLength="5" />
+
+        <EditText
+            android:id="@+id/edtDuracion"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:hint="Duración"
+            android:inputType="number"
+            android:maxLength="3"
+            />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnAddObra"

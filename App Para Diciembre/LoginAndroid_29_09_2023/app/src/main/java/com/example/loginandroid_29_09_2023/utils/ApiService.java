@@ -2,6 +2,7 @@ package com.example.loginandroid_29_09_2023.utils;
 
 import com.example.loginandroid_29_09_2023.add_obra.data.DataObras;
 import com.example.loginandroid_29_09_2023.add_valoracion.data.DataValoracion;
+import com.example.loginandroid_29_09_2023.list_genero.data.DataGeneros;
 import com.example.loginandroid_29_09_2023.list_sala.data.DataSalas;
 import com.example.loginandroid_29_09_2023.login_user.data.DataUsers;
 
@@ -26,12 +27,12 @@ public interface ApiService {
                               @Query("PASS") String pass);
     @GET("MyServlet")
     Call<DataObras> addObra(@Query("ACTION") String action,
-                            @Query("TITULO") String user,
+                            @Query("TITULO") String titulo,
                             @Query("DESCRIPCION") String desc,
                             @Query("PRECIO") float precio,
-                            @Query("IMG") String img,
-                            @Query("ID_SALA") int id_sala,
-                            @Query("FECHA") String fechaActuacion);
+                            @Query("DURACION") int duracion,
+                            @Query("EDAD_RECOMENDADA") String edadRecomendada,
+                            @Query("ID_GENERO") String id_genero);
 
     @GET("MyServlet")
     Call<DataSalas> listSala(@Query("ACTION") String action);
@@ -60,6 +61,8 @@ public interface ApiService {
     @GET("MyServlet")
     Call<DataObras> fichaDescriptiva(@Query("ACTION") String action,
                                      @Query("ID_OBRA") int id_obra);
+    @GET("MyServlet")
+    Call<DataGeneros> listGeneros(@Query("ACTION") String action);
 
 
         /*@GET("MyServlet")

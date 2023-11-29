@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Home"
     android:id="@+id/nestedScrollView"
-    tools:ignore="InvalidId"
-    android:background="@color/">
+    tools:ignore="InvalidId">
 
     <LinearLayout
         android:layout_width="match_parent"

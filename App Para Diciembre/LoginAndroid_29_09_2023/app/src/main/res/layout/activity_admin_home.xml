@@ -20,13 +20,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            app:cardBackgroundColor="#0000"
             app:cardCornerRadius="100dp">
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                tools:srcCompat="@drawable/user_icon" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -154,7 +155,7 @@
             app:cornerRadius="0dp" />
 
         <Button
-            android:id="@+id/btnViewCrear2"
+            android:id="@+id/btnLogOut"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center"

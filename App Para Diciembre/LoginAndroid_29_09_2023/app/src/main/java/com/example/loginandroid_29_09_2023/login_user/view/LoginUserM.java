@@ -75,12 +75,16 @@ public class LoginUserM extends AppCompatActivity implements ContractLoginUser.V
         editor.putBoolean("isLoggedIn", true);
         editor.putString("username", user.getUsername());
         editor.putInt("id_user", user.getId_user());
-        editor.apply();
+
         if (Objects.equals(user.getRol(), "A")){
+            editor.putString("Rol","A");
+            editor.apply();
             Intent mainIntent = new Intent(LoginUserM.this,
                     AdminHome.class);
             startActivity(mainIntent);
         } else if (Objects.equals(user.getRol(), "U")) {
+            editor.putString("Rol","U");
+            editor.apply();
             Intent mainIntent = new Intent(LoginUserM.this,
                     Home.class);
             startActivity(mainIntent);

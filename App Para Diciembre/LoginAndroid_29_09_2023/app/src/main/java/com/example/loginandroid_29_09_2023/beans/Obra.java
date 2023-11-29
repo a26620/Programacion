@@ -12,8 +12,9 @@ public class Obra{
     private Integer edadRecomendada;
     private String genero;
     private Integer duracion;
+    private Integer id_genero;
 
-    public Obra(Integer id_obra, String titulo, String descripcion, String img, Float precio, Integer id_sala, String fechaActuacion, Float valoracionMedia, Integer edadRecomendada, String genero, Integer duracion) {
+    public Obra(Integer id_obra, String titulo, String descripcion, String img, Float precio, Integer id_sala, String fechaActuacion, Float valoracionMedia, Integer edadRecomendada, String genero, Integer duracion, Integer id_genero) {
         this.id_obra = id_obra;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -25,8 +26,16 @@ public class Obra{
         this.edadRecomendada = edadRecomendada;
         this.genero = genero;
         this.duracion = duracion;
+        this.id_genero = id_genero;
     }
 
+    public Integer getId_genero() {
+        return id_genero;
+    }
+
+    public void setId_genero(Integer id_genero) {
+        this.id_genero = id_genero;
+    }
     public Integer getDuracion() {
         return duracion;
     }
@@ -70,7 +79,7 @@ public class Obra{
         this.img = img;
     }
 
-    public Float getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 

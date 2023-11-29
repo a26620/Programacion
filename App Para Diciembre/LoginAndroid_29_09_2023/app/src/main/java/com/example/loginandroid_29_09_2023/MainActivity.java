@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.loginandroid_29_09_2023.admin.view.AdminHome;
 import com.example.loginandroid_29_09_2023.login_user.view.LoginUserM;
 
 
@@ -32,10 +34,18 @@ public class MainActivity extends AppCompatActivity{
                 Intent mainIntent;
                 if (!isLoggedIn()){
                     mainIntent = new Intent(MainActivity.this, LoginUserM.class);
+                    startActivity(mainIntent);
                 }else{
-                    mainIntent = new Intent(MainActivity.this, Home.class);
+                    if (sharedPreferencesUserCFG.getString("Rol", "Valor_Por_Defecto").equals("U")){
+                        mainIntent = new Intent(MainActivity.this, Home.class);
+                        startActivity(mainIntent);
+                    }
+                    if (sharedPreferencesUserCFG.getString("Rol", "Valor_Por_Defecto").equals("A")){
+                        mainIntent = new Intent(MainActivity.this, AdminHome.class);
+                        startActivity(mainIntent);
+                    }
                 }
-                startActivity(mainIntent);
+
                 MainActivity.this.finish();
             }
         }, SPLASH_DISPLAY_LENGTH);

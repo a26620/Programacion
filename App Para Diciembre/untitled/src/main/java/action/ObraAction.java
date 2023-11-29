@@ -47,7 +47,7 @@ public class ObraAction implements IAction {
 
         ObraDAO obraDAO = new ObraDAO();
 
-        Mensaje mensaje = obraDAO.add(request.getParameter("TITULO"),request.getParameter("DESCRIPCION"),request.getParameter("IMG"), Float.parseFloat(request.getParameter("PRECIO")), Integer.parseInt(request.getParameter("ID_SALA")),request.getParameter("FECHA"));
+        Mensaje mensaje = obraDAO.add(request.getParameter("TITULO"),request.getParameter("DESCRIPCION"), Integer.parseInt(request.getParameter("DURACION")), Float.parseFloat(request.getParameter("PRECIO")), (request.getParameter("ID_GENERO")), (request.getParameter("EDAD_RECOMENDADA")));
 
         String jsonObra = "";
         Gson gson = new Gson();

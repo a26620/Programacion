@@ -1,6 +1,7 @@
 package com.example.loginandroid_29_09_2023.add_obra.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -20,33 +21,35 @@ import com.example.loginandroid_29_09_2023.R;
 import com.example.loginandroid_29_09_2023.add_obra.ContractAddObra;
 import com.example.loginandroid_29_09_2023.add_obra.presenter.AddObraPresenter;
 import com.example.loginandroid_29_09_2023.admin.view.AdminHome;
+import com.example.loginandroid_29_09_2023.beans.Genero;
 import com.example.loginandroid_29_09_2023.beans.Obra;
 import com.example.loginandroid_29_09_2023.beans.Sala;
 import com.example.loginandroid_29_09_2023.beans.User;
+import com.example.loginandroid_29_09_2023.list_genero.ContractListGenero;
+import com.example.loginandroid_29_09_2023.list_genero.presenter.ListGeneroPresenter;
 import com.example.loginandroid_29_09_2023.list_sala.ContractListSala;
 import com.example.loginandroid_29_09_2023.list_sala.presenter.ListSalaPresenter;
 import com.example.loginandroid_29_09_2023.login_user.presenter.LoginUserPresenter;
 import com.example.loginandroid_29_09_2023.login_user.view.LoginUserM;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class AddObra extends AppCompatActivity implements ContractAddObra.View, ContractListSala.View {
+public class AddObra extends AppCompatActivity implements ContractAddObra.View, ContractListGenero.View {
     private EditText edtTitulo;
-    private EditText edtImagen;
+    private CardView edtImagen;
     private EditText edtDescripcion;
     private EditText edtPrecio;
-    private EditText edtFecha;
+    private EditText edtDuracion;
     private Spinner spinnerOptions;
-    private String selectedDate;
+    private Spinner spinnerEdad;
     private Button btnAddObra;
     private Button AOvolverAH;
-    private String seleccion;
-    private int IdSala;
-
-    private ArrayList<Sala> listSalas;
+    private String seleccionGenero;
+    private String seleccionEdad;
 
 
 
@@ -54,8 +57,8 @@ public class AddObra extends AppCompatActivity implements ContractAddObra.View, 
     private AddObraPresenter presenter =
             new AddObraPresenter(this);
 
-    private ListSalaPresenter presenter2 =
-            new ListSalaPresenter(this);
+    private ListGeneroPresenter presenter2 =
+            new ListGeneroPresenter(this);
 
     /* PATRÓN SINGLETON*/
     private static AddObra mainActivity = null;
@@ -72,15 +75,16 @@ public class AddObra extends AppCompatActivity implements ContractAddObra.View, 
         initComponents();
     }
     private void initComponents(){
-        presenter2.listSala();
+        presenter2.listGeneros();
         edtTitulo = findViewById(R.id.edtTitulo);
         edtImagen = findViewById(R.id.edtImagen);
         edtDescripcion = findViewById(R.id.edtDescripcion);
         edtPrecio = findViewById(R.id.edtPrecio);
         btnAddObra = findViewById(R.id.btnAddObra);
-        edtFecha = findViewById(R.id.edtFecha);
-        spinnerOptions = findViewById(R.id.spinnerOptions);
+        spinnerOptions = findViewById(R.id.spinnerGenero);
+        spinnerEdad = findViewById(R.id.spinnerEdad);
         AOvolverAH = findViewById(R.id.AOvolverAH);
+        edtDuracion = findViewById(R.id.edtDuracion);
         AOvolverAH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,42 +96,43 @@ public class AddObra extends AppCompatActivity implements ContractAddObra.View, 
         btnAddObra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //sPeliculas.getDatosPeliculas();
                 Obra obra = new Obra();
                 obra.setTitulo(edtTitulo.getText().toString());
                 obra.setDescripcion(edtDescripcion.getText().toString());
-                obra.setImg(edtImagen.getText().toString());
                 obra.setPrecio(Float.parseFloat(edtPrecio.getText().toString()));
-                obra.setFechaActuacion(edtFecha.getText().toString());
-                for (Sala sala : listSalas) {
-                    if (sala.getNombre() == seleccion) {
-                        IdSala = sala.getId_sala();
-                    }
-                }
-                obra.setId_sala(IdSala);
+                obra.setDuracion(Integer.valueOf(edtDuracion.getText().toString()));
+                obra.setId_genero(Integer.valueOf(seleccionGenero));
+                obra.setEdadRecomendada(Integer.valueOf(seleccionEdad));
+                Log.e("seleccionEdad: ", seleccionEdad);
+                Log.e("seleccionGenero: ", seleccionGenero);
+
                 presenter.add(obra);
             }
         });
-        edtFecha.setOnClickListener(new View.OnClickListener() {
+        ArrayList<String> valores = new ArrayList<>();
+        valores.add("Edad Recomendada");
+        valores.add("+0");
+        valores.add("+3");
+        valores.add("+7");
+        valores.add("+12");
+        valores.add("+16");
+        valores.add("+18");
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, valores);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerEdad.setAdapter(adapter);
+        spinnerEdad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                final Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                seleccionEdad = parent.getItemAtPosition(position).toString();
+                seleccionEdad = seleccionEdad.substring(1);
+            }
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        AddObra.this, // Reemplaza "NombreDeTuActivity" por el nombre de tu actividad
-                        (view, selectedYear, selectedMonth, selectedDayOfMonth) -> {
-                            selectedDate = selectedDayOfMonth + "/" + (selectedMonth + 1) + "/" + selectedYear;
-                            edtFecha.setText(selectedDate);
-                        },
-                        year, month, dayOfMonth);
-
-                datePickerDialog.show();
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
 
     }
 
@@ -138,55 +143,44 @@ public class AddObra extends AppCompatActivity implements ContractAddObra.View, 
         startActivity(mainIntent);
     }
 
+
     @Override
-    public void successLogin(ArrayList<Sala> listSala) {
-        Log.e("successLogin: ", "ESTOY DONDE NO DEBO");
-
-        listSalas = listSala;
-
+    public void successlistGeneros(ArrayList<Genero> listGeneros) {
         List<String> opcionesList = new ArrayList<>();
-        opcionesList.add("Seleccione Sala");
+        opcionesList.add("Seleccione Género");
 
-        for (Sala sala : listSala) {
-            opcionesList.add(sala.getNombre());
+        for (Genero genero : listGeneros) {
+            opcionesList.add(genero.getNombre());
         }
-
-        // Convertir el ArrayList a un array si es necesario
         String[] opciones = opcionesList.toArray(new String[opcionesList.size()]);
+        String[] opcionesId = new String[opcionesList.size()];
 
-        opciones[0] = "Seleccione Sala";
-        // Iteras sobre la lista de salas y añades cada nombre al array 'opciones'
+
+        opciones[0] = "Seleccione Género";
+        opcionesId[0] = "0";
         for (int i = 1; i < opcionesList.size(); i++) {
-            Sala sala = listSala.get(i-1);
-            opciones[i] = sala.getNombre();
+            Genero genero = listGeneros.get(i - 1);
+            opciones[i] = genero.getNombre();
         }
-
+        for (int i = 1; i < opcionesList.size(); i++) {
+            Genero genero = listGeneros.get(i - 1);
+            opcionesId[i] = String.valueOf(genero.getId_genero());
+        }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, opciones);
-
-        // Define el diseño del dropdown del Spinner
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Aplica el adaptador al Spinner
         spinnerOptions.setAdapter(adapter);
-
-        // Manejar la selección del elemento en el Spinner (opcional)
         spinnerOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                seleccion = parent.getItemAtPosition(position).toString();
-                // Haz algo con la opción seleccionada (A, B, C)
-                // Por ejemplo: muestra un mensaje con la opción seleccionada
+                seleccionGenero = opcionesId[position];
             }
-
-
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // Acciones si no se selecciona nada (opcional)
             }
         });
-
     }
+
 
     @Override
     public void failureLogin(String err) {
