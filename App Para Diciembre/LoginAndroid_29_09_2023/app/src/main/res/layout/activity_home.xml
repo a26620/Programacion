@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Home"
     android:id="@+id/nestedScrollView"
-    tools:ignore="InvalidId">
+    tools:ignore="InvalidId"
+    android:background="@color/">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,13 +43,6 @@
                     android:background="@drawable/logout" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="375dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:text="BARRA DE BUSQUEDA" />
 
         <TextView
             android:id="@+id/txtMostSell"
