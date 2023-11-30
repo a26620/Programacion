@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home"
-    android:id="@+id/nestedScrollView"
+    android:id="@+id/Constraintlayout"
     tools:ignore="InvalidId">
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -19,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            app:cardBackgroundColor="#888888" >
+            app:cardBackgroundColor="#888888">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,60 +32,8 @@
                     android:layout_width="400dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
-
-                <ImageView
-                    android:id="@+id/btnLogOut"
-                    android:layout_width="52dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/logout" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/txtMostSell"
-            android:layout_width="375dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="16dp"
-            android:text="Obras Mas Populares"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/listaObrasAdmin2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listaMostSell"
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginBottom="20dp"
-            android:background="#00ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/txtBestRating"
-            android:layout_width="375dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="16dp"
-            android:text="Obras Mejor Valoradas"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listaBestRating"
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginBottom="20dp" />
 
         <TextView
             android:id="@+id/txtMasObras"
@@ -166,6 +115,7 @@
                         android:text="Ballet" />
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -226,6 +176,7 @@
                         android:layout_height="wrap_content"
                         android:text="+12" />
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Ed16Filter"
                     android:layout_width="wrap_content"
@@ -239,6 +190,7 @@
                         android:layout_height="wrap_content"
                         android:text="+16" />
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Ed18Filter"
                     android:layout_width="wrap_content"
@@ -257,11 +209,45 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listaFilter"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="546dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="#00ffffff" />
         </LinearLayout>
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#000000"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/homebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#000000"
+            app:srcCompat="@drawable/baseline_home_24" />
+
+        <ImageButton
+            android:id="@+id/communbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#000000"
+            app:srcCompat="@drawable/baseline_rate_review_24" />
+
+        <ImageButton
+            android:id="@+id/profilebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#000000"
+            app:srcCompat="@drawable/baseline_account_circle_24" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

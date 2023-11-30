@@ -15,6 +15,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.loginandroid_29_09_2023.adaptadores.listaBestRatingObra;
@@ -33,24 +34,15 @@ import com.example.loginandroid_29_09_2023.login_user.view.LoginUserM;
 
 import java.util.ArrayList;
 
-public class Home extends AppCompatActivity implements ContractListObraMostSell.View, ContractListObraBestRating.View, ContractListObraFilter.View {
+public class Home extends AppCompatActivity implements ContractListObraFilter.View {
 
 
     SharedPreferences sharedPreferencesUserCFG;
 
-    private ListObraMostSellPresenter presenter =
-            new ListObraMostSellPresenter(this);
-
-    private ListObraBestRatingPresenter presenter2 =
-            new ListObraBestRatingPresenter(this);
-
     private ListObraFilterPresenter presenter3 =
             new ListObraFilterPresenter(this);
 
-    private RecyclerView listaMostSell;
-    private RecyclerView listaBestRating;
     private RecyclerView listaFilter;
-    private ImageView btnLogOut;
     private int edadRecomendada;
     private CardView operaFilter;
     private CardView teatroFilter;
@@ -72,6 +64,9 @@ public class Home extends AppCompatActivity implements ContractListObraMostSell.
     private boolean Ed12Filteractive;
     private boolean Ed16Filteractive;
     private boolean Ed18Filteractive;
+    private ImageButton homebtn;
+    private ImageButton communbtn;
+    private ImageButton profilebtn;
 
 
     @Override
@@ -79,21 +74,14 @@ public class Home extends AppCompatActivity implements ContractListObraMostSell.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initComponents();
-        NestedScrollView nestedScrollView = findViewById(R.id.nestedScrollView);
-        nestedScrollView.post(() -> nestedScrollView.scrollTo(0, 0));
 
     }
 
     private void initComponents() {
         sharedPreferencesUserCFG = getSharedPreferences("com.MyApp.USER_CFG", Context.MODE_PRIVATE);
-        presenter.listObraMostSell();
-        presenter2.listObraBestRating();
         ArrayList<Integer> id_genero = new ArrayList<>(); // Inicializa id_genero
         ArrayList<Integer> edadRecomendada = new ArrayList<>(); // Inicializa id_genero
-        listaMostSell = findViewById(R.id.listaMostSell);
-        listaBestRating = findViewById(R.id.listaBestRating);
         listaFilter = findViewById(R.id.listaFilter);
-        btnLogOut = findViewById(R.id.btnLogOut);
         operaFilter = findViewById(R.id.operaFilter);
         teatroFilter = findViewById(R.id.teatroFilter);
         balletFilter = findViewById(R.id.balletFilter);
@@ -104,6 +92,9 @@ public class Home extends AppCompatActivity implements ContractListObraMostSell.
         Ed12Filter = findViewById(R.id.Ed12Filter);
         Ed16Filter = findViewById(R.id.Ed16Filter);
         Ed18Filter = findViewById(R.id.Ed18Filter);
+        homebtn = findViewById(R.id.homebtn);
+        communbtn = findViewById(R.id.communbtn);
+        profilebtn = findViewById(R.id.profilebtn);
         operaFilteractive = false;
         teatroFilteractive = false;
         musicalFilteractive = false;
@@ -114,6 +105,22 @@ public class Home extends AppCompatActivity implements ContractListObraMostSell.
         Ed12Filteractive = false;
         Ed16Filteractive = false;
         Ed18Filteractive = false;
+        communbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(Home.this,
+                        OtherObra.class);
+                startActivity(mainIntent);
+            }
+        });
+        profilebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(Home.this,
+                        Profile.class);
+                startActivity(mainIntent);
+            }
+        });
         operaFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -320,86 +327,8 @@ public class Home extends AppCompatActivity implements ContractListObraMostSell.
                 }
             }
         });
-        btnLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences.Editor editor = sharedPreferencesUserCFG.edit();
-                editor.remove("isLoggedIn");
-                editor.remove("username");
-                editor.remove("id_user");
-                editor.apply();
-                Intent mainIntent = new Intent(Home.this,
-                        LoginUserM.class);
-                startActivity(mainIntent);
-            }
-        });
-        listaFilter.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            boolean isScrolledToBottom = false;
-
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                isScrolledToBottom = !recyclerView.canScrollVertically(1);
-
-                if (isScrolledToBottom) {
-                    return;
-                }
-            }
-
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && isScrolledToBottom) {
-                    NestedScrollView nestedScrollView = findViewById(R.id.nestedScrollView);
-                    nestedScrollView.post(() -> nestedScrollView.fullScroll(View.FOCUS_DOWN));
-                }
-            }
-        });
-        listaFilter.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            boolean isScrolledToBottom = false;
-
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                isScrolledToBottom = !recyclerView.canScrollVertically(1);
-
-                if (isScrolledToBottom) {
-                    return;
-                }
-            }
-
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && isScrolledToBottom) {
-                    NestedScrollView nestedScrollView = findViewById(R.id.nestedScrollView);
-                    nestedScrollView.post(() -> nestedScrollView.fullScroll(View.FOCUS_DOWN));
-                }
-            }
-        });
 
         presenter3.listObraFilter(id_genero, edadRecomendada);
-
-    }
-
-    @Override
-    public void successlistObrasMostSell(ArrayList<Obra> lstObra) {
-        listaMostSellObra adapterListaMostSell = new listaMostSellObra(lstObra);
-        listaMostSell.setAdapter(adapterListaMostSell);
-        listaMostSell.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-    }
-
-    @Override
-    public void failureLogin(String err) {
-
-    }
-
-
-    @Override
-    public void successlistObrasBestRating(ArrayList<Obra> lstObra) {
-        listaBestRatingObra adapterListaBestRating = new listaBestRatingObra(lstObra);
-        listaBestRating.setAdapter(adapterListaBestRating);
-        listaBestRating.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-    }
-
-    @Override
-    public void failurelistObrasBestRating(String err) {
 
     }
 
