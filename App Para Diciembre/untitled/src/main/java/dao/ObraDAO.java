@@ -64,11 +64,12 @@ public class ObraDAO{
 
         ArrayList<Obra> obras = new ArrayList<>();
 
-        String sql = "SELECT o.id_obra, o.titulo, COUNT(c.id_obra) AS cantidad_vendida " +
+        String sql = "SELECT o.id_obra, o.titulo, COUNT(c.id_compra) AS cantidad_vendida " +
                 "FROM OBRA o " +
-                "LEFT JOIN COMPRA c ON o.id_obra = c.id_obra " +
+                "LEFT JOIN COMPRA c ON o.id_obra = c.id_actuacion " +
                 "GROUP BY o.id_obra, o.titulo " +
                 "ORDER BY cantidad_vendida DESC LIMIT 10";
+
 
         System.out.println(sql);
 
