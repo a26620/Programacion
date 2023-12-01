@@ -11,17 +11,39 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imagenCabecera"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="311dp"
-            android:background="@drawable/fondoobra"/>
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imagenCabecera"
+                android:layout_width="match_parent"
+                android:layout_height="311dp"
+                android:background="@drawable/fondoobra" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:translationX="10dp"
+                android:translationY="10dp"
+                app:cardBackgroundColor="#667C7B7B"
+                app:cardCornerRadius="20dp">
+
+                <ImageButton
+                    android:id="@+id/backBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#009F9C9C"
+                    android:src="@drawable/baseline_arrow_back_24" />
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="380dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txtTitulo"
@@ -124,7 +146,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
@@ -207,6 +229,29 @@
                     android:layout_weight="1" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinnernEntradas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#4CAF50"
+                    android:text="COMPRAR"
+                    app:cornerRadius="0dp" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

@@ -51,10 +51,11 @@ CREATE TABLE USR (
 
 CREATE TABLE COMPRA (
     id_compra INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
+    id_user INT,
     id_actuacion INT,
     fechaCompra DATE,
-    FOREIGN KEY (user_id) REFERENCES USR(id_user),
+    importe DECIMAL(10, 2),
+    FOREIGN KEY (id_user) REFERENCES USR(id_user),
     FOREIGN KEY (id_actuacion) REFERENCES OBRA_SALA(id_actuacion)
 );
 
