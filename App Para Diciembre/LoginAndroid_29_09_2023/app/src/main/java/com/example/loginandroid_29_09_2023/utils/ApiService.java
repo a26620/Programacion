@@ -1,5 +1,6 @@
 package com.example.loginandroid_29_09_2023.utils;
 
+import com.example.loginandroid_29_09_2023.add_compra.data.DataCompras;
 import com.example.loginandroid_29_09_2023.add_obra.data.DataObras;
 import com.example.loginandroid_29_09_2023.add_valoracion.data.DataValoracion;
 import com.example.loginandroid_29_09_2023.list_genero.data.DataGeneros;
@@ -47,11 +48,12 @@ public interface ApiService {
     @GET("MyServlet")
     Call<DataObras> listObrasFilter(@Query("ACTION") String action,
                                     @Query("ID_GENERO") String id_genero,
-                                    @Query("EDAD_RECOMENDADA") String edadRecomendada);
+                                    @Query("EDAD_RECOMENDADA") String edadRecomendada,
+                                    @Query("TITULO") String titulo);
 
     @GET("MyServlet")
     Call<DataValoracion> addValoracion(@Query("ACTION") String action,
-                                       @Query("ID_USER") int id_genero,
+                                       @Query("ID_USER") int id_user,
                                        @Query("ID_OBRA") int id_obra,
                                        @Query("PUNTUACION") float puntuacion);
 
@@ -63,6 +65,21 @@ public interface ApiService {
                                      @Query("ID_OBRA") int id_obra);
     @GET("MyServlet")
     Call<DataGeneros> listGeneros(@Query("ACTION") String action);
+
+    @GET("MyServlet")
+    Call<DataCompras> addCompra(@Query("ACTION") String action,
+                                    @Query("ID_USER") int id_user,
+                                    @Query("ID_ACTUACION") int id_actuacion,
+                                    @Query("IMPORTE") float importe,
+                                    @Query("N_ENTRADAS") Integer nEntradas);
+
+    @GET("MyServlet")
+    Call<DataObras> listActuacions(@Query("ACTION") String action,
+                                    @Query("ID_OBRA") int id_obra);
+
+    @GET("MyServlet")
+    Call<DataCompras> listCompras(@Query("ACTION") String action,
+                                   @Query("ID_USER") int id_obra);
 
 
         /*@GET("MyServlet")

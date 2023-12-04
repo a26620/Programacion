@@ -1,4 +1,4 @@
-package model;
+package com.example.loginandroid_29_09_2023.beans;
 
 public class Compra {
     private Integer id_compra;
@@ -19,7 +19,6 @@ public class Compra {
         this.nEntradas = nEntradas;
         this.tituloObra = tituloObra;
     }
-
     public String getTituloObra() {
         return tituloObra;
     }
@@ -81,3 +80,4 @@ public class Compra {
 
 
 }
+

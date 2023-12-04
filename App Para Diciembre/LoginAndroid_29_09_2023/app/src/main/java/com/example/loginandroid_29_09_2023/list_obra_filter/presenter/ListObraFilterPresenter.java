@@ -30,7 +30,7 @@ public class ListObraFilterPresenter implements ContractListObraFilter.Presenter
         view.failurelistObrasFilter("");
     }
     @Override
-    public void listObraFilter(ArrayList<Integer> id_genero, ArrayList<Integer> edadRecomendada) {
-        model.listObraFilterAPI(id_genero, edadRecomendada,this);
+    public void listObraFilter(ArrayList<Integer> id_genero, ArrayList<Integer> edadRecomendada, String titulo) {
+        model.listObraFilterAPI(id_genero, edadRecomendada, titulo,this);
     }
 }

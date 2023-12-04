@@ -21,7 +21,6 @@ public class SalaAction implements IAction {
                 pagDestino = listAction(request, response);
                 break;
         }
-        System.out.println(pagDestino);
         return pagDestino;
     }
     

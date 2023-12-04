@@ -18,8 +18,13 @@
         <activity
             android:name=".ficha_descriptiva.view.FichaDescriptiva"
             android:exported="false" />
+        <activity android:name=".list_compra.view.ListCompra"
+            android:exported="false" />
         <activity
             android:name=".OtherObra"
+            android:exported="false" />
+        <activity
+            android:name=".add_compra.view.AddCompra"
             android:exported="false" />
         <activity
             android:name=".Profile"

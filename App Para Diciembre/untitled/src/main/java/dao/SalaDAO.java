@@ -30,7 +30,6 @@ public class SalaDAO{
 
         try {
             motorSql.connect();
-            System.out.println(sql);
             ResultSet rs = motorSql.executeQuery(sql);
 
             while (rs.next()) {

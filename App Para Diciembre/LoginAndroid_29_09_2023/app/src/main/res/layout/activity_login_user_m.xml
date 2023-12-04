@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".login_user.view.LoginUserM"
-    android:background="@drawable/bg">
+    android:background="@drawable/fondologin">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/my_primary"
+        android:background="@color/azul"
         android:alpha="0.7">
     </RelativeLayout>
     <LinearLayout
@@ -40,17 +40,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="28dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome to Miami!!"
-                android:textColor="@color/my_primary"
+                android:text="Bienvenido al Teatro!!"
+                android:textColor="#07247A"
                 android:textSize="32sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please login with your information"
+                android:text="Inicie Sesion"
                 android:alpha="0.7"/>
             <View
                 android:layout_width="wrap_content"
@@ -58,7 +59,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email address"
+                android:text="Nombre de Usuario"
                 android:alpha="0.7"
                 android:textStyle="bold" />
             <EditText
@@ -74,7 +75,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
+                android:text="Contraseña"
                 android:alpha="0.7"
                 android:textStyle="bold" />
             <EditText
@@ -89,62 +90,21 @@
                 android:layout_height="wrap_content"
                 >
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Remember me"
-                    android:layout_centerVertical="true"
-                    android:alpha="0.7"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="I forgot my password"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="10dp"/>
             </RelativeLayout>
-            <com.google.android.material.button.MaterialButton
+
+            <Button
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:backgroundTint="#07247A"
                 android:text="Login"
-                app:cornerRadius="32dp"
-                android:id="@+id/btnLogin"
-                />
+                app:cornerRadius="32dp" />
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Or Login with"
-                android:layout_gravity="center"
-                android:alpha="0.7"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/facebook"/>
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/github"/>
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/twitter"/>
-            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

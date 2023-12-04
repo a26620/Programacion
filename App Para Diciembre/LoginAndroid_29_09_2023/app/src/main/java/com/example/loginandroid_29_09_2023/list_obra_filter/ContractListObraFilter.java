@@ -14,7 +14,7 @@ public interface ContractListObraFilter {
     }
     public interface Presenter{
         // void login(String email, String pass);
-        void listObraFilter(ArrayList<Integer> id_genero,ArrayList<Integer> edadRecomendada);
+        void listObraFilter(ArrayList<Integer> id_genero,ArrayList<Integer> edadRecomendada,String titulo);
         // void login(ViewUser viewUser);
         // VIEW-ORM
         // BEANS-ENTITIES
@@ -25,6 +25,6 @@ public interface ContractListObraFilter {
             void onFinished(ArrayList<Obra> lstObra);
             void onFailure(String err);
         }
-        void listObraFilterAPI(ArrayList<Integer> id_genero,ArrayList<Integer> edadRecomendada,OnListObraFilterListener onListObraFilterListener);
+        void listObraFilterAPI(ArrayList<Integer> id_genero,ArrayList<Integer> edadRecomendada,String titulo, OnListObraFilterListener onListObraFilterListener);
     }
 }

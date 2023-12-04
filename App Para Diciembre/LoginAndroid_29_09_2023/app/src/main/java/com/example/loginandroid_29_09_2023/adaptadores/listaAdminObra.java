@@ -33,6 +33,7 @@ public class listaAdminObra extends RecyclerView.Adapter<listaAdminObra.ObraView
     public void onBindViewHolder(@NonNull listaAdminObra.ObraViewHolder holder, int position) {
         holder.nombreObra.setText(lstObra.get(position).getTitulo());
         holder.fechaActuacion.setText(lstObra.get(position).getFechaActuacion());
+        holder.horaActuacion.setText(lstObra.get(position).getHoraActuacion());
     }
 
     @Override
@@ -42,13 +43,15 @@ public class listaAdminObra extends RecyclerView.Adapter<listaAdminObra.ObraView
 
     public class ObraViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nombreObra, fechaActuacion;
+        TextView nombreObra, fechaActuacion, horaActuacion;
 
         public ObraViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nombreObra = itemView.findViewById(R.id.nombreObra);
             fechaActuacion = itemView.findViewById(R.id.fechaActuacion);
+            horaActuacion = itemView.findViewById(R.id.horaActuacion);
+
         }
     }
 }

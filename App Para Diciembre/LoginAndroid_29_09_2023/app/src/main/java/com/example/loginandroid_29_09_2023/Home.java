@@ -13,8 +13,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -67,6 +70,8 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
     private ImageButton homebtn;
     private ImageButton communbtn;
     private ImageButton profilebtn;
+    private EditText edtBusquedaTitulo;
+    private String titulo;
 
 
     @Override
@@ -105,6 +110,24 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
         Ed12Filteractive = false;
         Ed16Filteractive = false;
         Ed18Filteractive = false;
+        edtBusquedaTitulo = findViewById(R.id.edtBusquedaTitulo); // Reemplaza con tu ID
+
+        // Agrega un TextWatcher al EditText
+        edtBusquedaTitulo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int before, int count) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                titulo = charSequence.toString();
+                presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
         communbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,8 +151,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     operaFilteractive = true;
                     id_genero.add(4);
                     operaFilter.setCardBackgroundColor(Color.BLUE);
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
-
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
                     operaFilter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
                     for (int i = id_genero.size() - 1; i >= 0; i--) {
@@ -138,7 +160,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                         }
                     }
                     operaFilteractive = false;
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 }
             }
         });
@@ -149,8 +171,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     teatroFilteractive = true;
                     id_genero.add(1);
                     teatroFilter.setCardBackgroundColor(Color.BLUE);
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
-
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
                     teatroFilter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
                     for (int i = id_genero.size() - 1; i >= 0; i--) {
@@ -159,7 +180,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                         }
                     }
                     teatroFilteractive = false;
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 }
             }
         });
@@ -170,8 +191,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     musicalFilteractive = true;
                     id_genero.add(2);
                     musicalFilter.setCardBackgroundColor(Color.BLUE);
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
-
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
                     musicalFilter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
                     for (int i = id_genero.size() - 1; i >= 0; i--) {
@@ -180,7 +200,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                         }
                     }
                     musicalFilteractive = false;
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 }
             }
         });
@@ -191,8 +211,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     balletFilteractive = true;
                     id_genero.add(3);
                     balletFilter.setCardBackgroundColor(Color.BLUE);
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
-
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
                     balletFilter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
                     for (int i = id_genero.size() - 1; i >= 0; i--) {
@@ -201,7 +220,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                         }
                     }
                     balletFilteractive = false;
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 }
             }
         });
@@ -212,8 +231,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed0Filteractive = true;
                     edadRecomendada.add(0);
                     Ed0Filter.setCardBackgroundColor(Color.BLUE);
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
-
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
                     Ed0Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
@@ -222,7 +240,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                         }
                     }
                     Ed0Filteractive = false;
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 }
             }
         });
@@ -233,7 +251,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed3Filteractive = true;
                     edadRecomendada.add(3);
                     Ed3Filter.setCardBackgroundColor(Color.BLUE);
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
                     Ed3Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
@@ -242,7 +260,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                         }
                     }
                     Ed3Filteractive = false;
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 }
             }
         });
@@ -253,7 +271,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed7Filteractive = true;
                     edadRecomendada.add(7);
                     Ed7Filter.setCardBackgroundColor(Color.BLUE);
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
                     Ed7Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
@@ -262,7 +280,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                         }
                     }
                     Ed7Filteractive = false;
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 }
             }
         });
@@ -273,7 +291,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed12Filteractive = true;
                     edadRecomendada.add(12);
                     Ed12Filter.setCardBackgroundColor(Color.BLUE);
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
                     Ed12Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
@@ -282,7 +300,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                         }
                     }
                     Ed12Filteractive = false;
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 }
             }
         });
@@ -293,7 +311,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed16Filteractive = true;
                     edadRecomendada.add(16);
                     Ed16Filter.setCardBackgroundColor(Color.BLUE);
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
                     Ed16Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
@@ -302,7 +320,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                         }
                     }
                     Ed16Filteractive = false;
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 }
             }
         });
@@ -313,7 +331,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed18Filteractive = true;
                     edadRecomendada.add(18);
                     Ed18Filter.setCardBackgroundColor(Color.BLUE);
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
                     Ed18Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
@@ -323,12 +341,12 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     }
                     Ed18Filteractive = false;
 
-                    presenter3.listObraFilter(id_genero, edadRecomendada);
+                    presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 }
             }
         });
 
-        presenter3.listObraFilter(id_genero, edadRecomendada);
+        presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
 
     }
 
@@ -342,7 +360,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
 
     @Override
     public void failurelistObrasFilter(String err) {
-        Log.e("failurelistObrasFilter: ","DENTROOOO" );
+        Log.e("failurelistObrasFilter: ", "DENTROOOO");
         ArrayList<Obra> lstObra = null;
         listaFilterObra adapterListaAllObra = new listaFilterObra(lstObra);
         listaFilter.setAdapter(adapterListaAllObra);

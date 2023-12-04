@@ -16,33 +16,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            app:cardBackgroundColor="#888888">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="400dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
         <TextView
             android:id="@+id/txtMasObras"
             android:layout_width="375dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="Más Obras"
+            android:gravity="center"
+            android:text="Obras"
+            android:textColor="@color/black"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/listaObrasAdmin2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.075"
@@ -54,155 +39,197 @@
             android:layout_gravity="center"
             android:orientation="vertical">
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#000000">
+
+                <EditText
+                    android:id="@+id/edtBusquedaTitulo"
+                    android:layout_width="370dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:backgroundTintMode="screen"
+                    android:ems="10"
+                    android:hint="  Busqueda por titulo.."
+                    android:inputType="text"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/black" />
+            </androidx.cardview.widget.CardView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/operaFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/purple_200"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="#07247A"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginRight="8dp">
 
                     <TextView
                         android:id="@+id/textView91"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ópera" />
+                        android:text="Ópera"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/teatroFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/purple_200"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="#07247A"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginRight="8dp">
 
                     <TextView
                         android:id="@+id/textView122"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Teatro" />
+                        android:shadowColor="#07247A"
+                        android:text="Teatro"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/musicalFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/purple_200"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="#07247A"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginRight="8dp">
 
                     <TextView
                         android:id="@+id/textView132"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Musical" />
+                        android:text="Musical"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/balletFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/purple_200"
+                    app:cardBackgroundColor="#07247A"
                     app:cardCornerRadius="5dp">
 
                     <TextView
                         android:id="@+id/textView172"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ballet" />
+                        android:text="Ballet"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Ed0Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/purple_200"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="#07247A"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginRight="8dp">
 
                     <TextView
                         android:id="@+id/textView99"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+0" />
+                        android:text="+0"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Ed3Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/purple_200"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="#07247A"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginRight="8dp">
 
                     <TextView
                         android:id="@+id/textView12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+3" />
+                        android:text="+3"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Ed7Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/purple_200"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="#07247A"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginRight="8dp">
 
                     <TextView
                         android:id="@+id/textView13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+7" />
+                        android:text="+7"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Ed12Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/purple_200"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="#07247A"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginRight="8dp">
 
                     <TextView
                         android:id="@+id/textView179"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+12" />
+                        android:text="+12"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Ed16Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/purple_200"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="#07247A"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginRight="8dp">
 
                     <TextView
                         android:id="@+id/textView1734"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+16" />
+                        android:text="+16"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Ed18Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/purple_200"
+                    app:cardBackgroundColor="#07247A"
                     app:cardCornerRadius="5dp">
 
                     <TextView
                         android:id="@+id/textView171"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="+18" />
+                        android:text="+18"
+                        android:textColor="@color/white" />
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 

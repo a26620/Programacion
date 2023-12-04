@@ -54,6 +54,7 @@ CREATE TABLE COMPRA (
     id_user INT,
     id_actuacion INT,
     fechaCompra DATE,
+    nEntradas INT,
     importe DECIMAL(10, 2),
     FOREIGN KEY (id_user) REFERENCES USR(id_user),
     FOREIGN KEY (id_actuacion) REFERENCES OBRA_SALA(id_actuacion)

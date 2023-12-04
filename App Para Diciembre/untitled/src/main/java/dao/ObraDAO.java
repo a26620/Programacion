@@ -101,10 +101,10 @@ public class ObraDAO{
 
         ArrayList<Obra> obras = new ArrayList<>();
 
-        String sql = SQL_FIND_ALL ;
+        String sql = "SELECT OBRA_SALA.*, OBRA.* FROM OBRA_SALA INNER JOIN OBRA ON OBRA_SALA.id_obra = OBRA.id_obra WHERE 1=1" ;
 
         if (id_sala != 0){
-            sql +="AND id_sala ="+id_sala;
+            sql +=" AND id_sala ="+id_sala;
         }
 
         boolean coincidencia = false;
@@ -117,13 +117,13 @@ public class ObraDAO{
 
                 Obra obra = new Obra();
 
-                obra.setId_obra(rs.getInt(1));
-                obra.setTitulo(rs.getString(2));
-                obra.setDescripcion(rs.getString(3));
-                obra.setImg(rs.getString(4));
-                obra.setPrecio(Float.parseFloat(rs.getString(5)));
-                obra.setId_sala(rs.getInt(6));
-                obra.setFechaActuacion(rs.getString(7));
+                obra.setId_obra(rs.getInt(2));
+                obra.setTitulo(rs.getString(7));
+                obra.setImg(rs.getString(9));
+                obra.setPrecio(Float.parseFloat(rs.getString(10)));
+                obra.setId_sala(rs.getInt(3));
+                obra.setFechaActuacion(rs.getString(4));
+                obra.setHoraActuacion(rs.getString(5));
 
                 obras.add(obra);
 
@@ -215,7 +215,7 @@ public class ObraDAO{
 
     }
 
-    public ArrayList<Obra> listfilter(String[] id_generos, String[] edadRecomendada) {
+    public ArrayList<Obra> listfilter(String[] id_generos, String[] edadRecomendada, String titulo) {
 
 
         ArrayList<Obra> obras = new ArrayList<>();
@@ -238,6 +238,10 @@ public class ObraDAO{
             }
             sql = sql.substring(0, sql.length()-2);
             sql += ")";
+        }
+
+        if (titulo != null && !titulo.isEmpty()) {
+                sql += " AND titulo LIKE '%" + titulo + "%'";
         }
 
         try {

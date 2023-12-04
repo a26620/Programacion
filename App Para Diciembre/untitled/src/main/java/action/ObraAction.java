@@ -116,7 +116,7 @@ public class ObraAction implements IAction {
         ObraDAO obraDAO = new ObraDAO();
 
 
-        ArrayList<Obra> lstObra = obraDAO.listfilter(new String[]{request.getParameter("ID_GENERO")},new String[]{request.getParameter("EDAD_RECOMENDADA")});
+        ArrayList<Obra> lstObra = obraDAO.listfilter(new String[]{request.getParameter("ID_GENERO")},new String[]{request.getParameter("EDAD_RECOMENDADA")},request.getParameter("TITULO"));
 
         String jsonObra = "";
         Gson gson = new Gson();

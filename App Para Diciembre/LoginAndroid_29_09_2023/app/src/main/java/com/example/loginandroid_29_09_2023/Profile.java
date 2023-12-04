@@ -22,6 +22,7 @@ import com.example.loginandroid_29_09_2023.adaptadores.listaBestRatingObra;
 import com.example.loginandroid_29_09_2023.adaptadores.listaFilterObra;
 import com.example.loginandroid_29_09_2023.adaptadores.listaMostSellObra;
 import com.example.loginandroid_29_09_2023.beans.Obra;
+import com.example.loginandroid_29_09_2023.list_compra.view.ListCompra;
 import com.example.loginandroid_29_09_2023.list_obra_best_rating.ContractListObraBestRating;
 import com.example.loginandroid_29_09_2023.list_obra_best_rating.presenter.ListObraBestRatingPresenter;
 import com.example.loginandroid_29_09_2023.list_obra_filter.ContractListObraFilter;
@@ -43,6 +44,7 @@ public class Profile extends AppCompatActivity{
     private ImageButton homebtn;
     private ImageButton communbtn;
     private ImageButton profilebtn;
+    private Button btnHistorialCompras;
 
 
 
@@ -59,6 +61,8 @@ public class Profile extends AppCompatActivity{
         homebtn = findViewById(R.id.homebtn);
         communbtn = findViewById(R.id.communbtn);
         profilebtn = findViewById(R.id.profilebtn);
+        btnHistorialCompras = findViewById(R.id.btnHistorialCompras);
+
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +76,16 @@ public class Profile extends AppCompatActivity{
                 startActivity(mainIntent);
             }
         });
+
+        btnHistorialCompras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(Profile.this,
+                        ListCompra.class);
+                startActivity(mainIntent);
+            }
+        });
+
         homebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +94,7 @@ public class Profile extends AppCompatActivity{
                 startActivity(mainIntent);
             }
         });
+
         communbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

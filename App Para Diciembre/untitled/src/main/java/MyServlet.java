@@ -40,6 +40,12 @@ public class MyServlet extends HttpServlet {
             case "GENERO":
                 out.print(new GeneroAction().execute(request, response));
                 break;
+            case "ACTUACION":
+                out.print(new ActuacionAction().execute(request, response));
+                break;
+            case "COMPRA":
+                out.print(new CompraAction().execute(request, response));
+                break;
         }
         out.print(answer);
     }
