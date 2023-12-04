@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.loginandroid_29_09_2023.R;
 import com.example.loginandroid_29_09_2023.adaptadores.listaAdminSala;
 import com.example.loginandroid_29_09_2023.adaptadores.listaAdminObra;
+import com.example.loginandroid_29_09_2023.add_actuacion.view.AddActuacion;
 import com.example.loginandroid_29_09_2023.add_obra.ContractAddObra;
 import com.example.loginandroid_29_09_2023.add_obra.presenter.AddObraPresenter;
 import com.example.loginandroid_29_09_2023.add_obra.view.AddObra;
@@ -41,6 +42,7 @@ public class ListSala extends AppCompatActivity implements ContractListSala.View
     private RecyclerView lista;
 
     private Button AOvolverAH;
+    private Button addActuacion;
 
 
     @Override
@@ -54,11 +56,20 @@ public class ListSala extends AppCompatActivity implements ContractListSala.View
         presenter.listSala();
         lista = findViewById(R.id.lista);
         AOvolverAH = findViewById(R.id.AOvolverAH);
+        addActuacion = findViewById(R.id.addActuacion);
         AOvolverAH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(ListSala.this,
                         AdminHome.class);
+                startActivity(mainIntent);
+            }
+        });
+        addActuacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(ListSala.this,
+                        AddActuacion.class);
                 startActivity(mainIntent);
             }
         });

@@ -24,6 +24,9 @@
             android:name=".OtherObra"
             android:exported="false" />
         <activity
+            android:name=".add_actuacion.view.AddActuacion"
+            android:exported="false" />
+        <activity
             android:name=".add_compra.view.AddCompra"
             android:exported="false" />
         <activity

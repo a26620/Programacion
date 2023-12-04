@@ -80,6 +80,12 @@ public interface ApiService {
     @GET("MyServlet")
     Call<DataCompras> listCompras(@Query("ACTION") String action,
                                    @Query("ID_USER") int id_obra);
+    @GET("MyServlet")
+    Call<DataObras> addActuacion(@Query("ACTION") String action,
+                                @Query("ID_OBRA") int id_obra,
+                                @Query("ID_SALA") int id_sala,
+                                @Query("FECHA") String fecha,
+                                @Query("HORA") String hora);
 
 
         /*@GET("MyServlet")
