@@ -3,7 +3,9 @@ package action;
 import com.google.gson.Gson;
 import dao.ActuacionDAO;
 import dao.GeneroDAO;
+import dao.ValoracionDAO;
 import model.Genero;
+import model.Mensaje;
 import model.Obra;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +23,11 @@ public class ActuacionAction implements IAction{
             case "LIST":
                 pagDestino = listAction(request, response);
                 break;
+        }
+        switch (arrayAction[1]) {
+            case "ADD":
+                 pagDestino = addAction(request, response);
+                 break;
         }
         System.out.println(pagDestino);
         return pagDestino;
@@ -44,5 +51,17 @@ public class ActuacionAction implements IAction{
         jsonObra += "]}";
 
         return jsonObra;
+    }
+    private String addAction(HttpServletRequest request,
+                                       HttpServletResponse response) {
+        ActuacionDAO actuacionDAO = new ActuacionDAO();
+
+        Mensaje mensaje = actuacionDAO.add(Integer.parseInt(request.getParameter("ID_OBRA")),Integer.parseInt(request.getParameter("ID_SALA")),request.getParameter("FECHA"),request.getParameter("HORA"));
+
+        String jsonValoracion = "";
+        Gson gson = new Gson();
+        jsonValoracion += "{\"message\": \"Actuacion Success\"}";
+
+        return jsonValoracion;
     }
 }

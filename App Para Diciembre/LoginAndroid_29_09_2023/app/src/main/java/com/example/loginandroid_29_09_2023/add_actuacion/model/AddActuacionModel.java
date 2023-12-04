@@ -30,7 +30,7 @@ public class AddActuacionModel implements ContractAddActuacion.Model {
                 create(ApiService.class);
 
         // Realizar la solicitud al Servlet
-        Call<DataObras> call = apiService.addActuacion ("COMPRA.ADD",obra.getId_obra(),obra.getId_sala(),obra.getFechaActuacion(),obra.getHoraActuacion());
+        Call<DataObras> call = apiService.addActuacion ("ACTUACION.ADD",obra.getId_obra(),obra.getId_sala(),obra.getFechaActuacion(),obra.getHoraActuacion());
         call.enqueue(new Callback<DataObras>(){
             @Override
             public void onResponse(Call<DataObras> call, Response<DataObras> response) {
