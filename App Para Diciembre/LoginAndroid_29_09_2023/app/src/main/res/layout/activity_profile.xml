@@ -14,20 +14,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="100dp"
-            app:cardBackgroundColor="#0000"
-            app:cardCornerRadius="100dp">
-
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="230dp"
                 android:layout_height="230dp"
-                tools:srcCompat="@drawable/user_icon" />
-        </androidx.cardview.widget.CardView>
+                android:layout_gravity="center"
+                android:src="@drawable/user_icon" />
 
 
         <Button
@@ -35,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:layout_marginTop="80dp"
             android:backgroundTint="#1848D8"
             android:text="Historial Compras"
             android:textSize="20sp"
