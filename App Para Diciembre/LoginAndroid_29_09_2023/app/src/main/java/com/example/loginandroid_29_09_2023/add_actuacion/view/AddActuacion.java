@@ -133,6 +133,9 @@ public class AddActuacion extends AppCompatActivity implements ContractListSala.
             @Override
             public void onClick(View v) {
                 addActuacionPresenter.add(obra);
+                Intent mainIntent = new Intent(AddActuacion.this,
+                        ListSala.class);
+                startActivity(mainIntent);
             }
         });
 
