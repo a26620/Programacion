@@ -16,8 +16,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddCompraModel implements ContractAddCompra.Model {
-    //private static final String IP_BASE = "192.168.104.77:8080";
-    private static final String IP_BASE = "192.168.1.48:8080";
+    private static final String IP_BASE = "192.168.104.77:8080";
+    //private static final String IP_BASE = "192.168.1.48:8080";
     private AddCompraPresenter presenter;
     public AddCompraModel(AddCompraPresenter presenter){
         this.presenter = presenter;

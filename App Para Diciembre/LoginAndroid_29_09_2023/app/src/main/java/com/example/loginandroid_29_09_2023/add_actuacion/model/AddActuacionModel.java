@@ -16,8 +16,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddActuacionModel implements ContractAddActuacion.Model {
-    //private static final String IP_BASE = "192.168.104.77:8080";
-    private static final String IP_BASE = "192.168.1.48:8080";
+    private static final String IP_BASE = "192.168.104.77:8080";
+    //private static final String IP_BASE = "192.168.1.48:8080";
     private AddActuacionPresenter presenter;
     public AddActuacionModel(AddActuacionPresenter presenter){
         this.presenter = presenter;

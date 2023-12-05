@@ -95,6 +95,9 @@ public class AddCompra extends AppCompatActivity implements ContractListActuacio
                 }
                 if (comprar == true){
                     addCompraPresenter.add(compra);
+                    Intent mainIntent = new Intent(AddCompra.this,
+                            Profile.class);
+                    startActivity(mainIntent);
                 }
 
             }
@@ -154,9 +157,7 @@ public class AddCompra extends AppCompatActivity implements ContractListActuacio
                 // Manejar el caso en que no se ha seleccionado ningún elemento
             }
         });
-        Intent mainIntent = new Intent(AddCompra.this,
-                Profile.class);
-        startActivity(mainIntent);
+
     }
 
 
