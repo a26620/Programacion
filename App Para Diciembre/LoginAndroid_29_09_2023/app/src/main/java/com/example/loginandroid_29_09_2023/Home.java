@@ -153,7 +153,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     operaFilter.setCardBackgroundColor(Color.BLUE);
                     presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
-                    operaFilter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
+                    operaFilter.setCardBackgroundColor(Color.parseColor("#07247A"));
                     for (int i = id_genero.size() - 1; i >= 0; i--) {
                         if (id_genero.get(i) == 4) {
                             id_genero.remove(i);
@@ -173,7 +173,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     teatroFilter.setCardBackgroundColor(Color.BLUE);
                     presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
-                    teatroFilter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
+                    teatroFilter.setCardBackgroundColor(Color.parseColor("#07247A"));
                     for (int i = id_genero.size() - 1; i >= 0; i--) {
                         if (id_genero.get(i) == 1) {
                             id_genero.remove(i);
@@ -193,7 +193,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     musicalFilter.setCardBackgroundColor(Color.BLUE);
                     presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
-                    musicalFilter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
+                    musicalFilter.setCardBackgroundColor(Color.parseColor("#07247A"));
                     for (int i = id_genero.size() - 1; i >= 0; i--) {
                         if (id_genero.get(i) == 2) {
                             id_genero.remove(i);
@@ -213,7 +213,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     balletFilter.setCardBackgroundColor(Color.BLUE);
                     presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
-                    balletFilter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
+                    balletFilter.setCardBackgroundColor(Color.parseColor("#07247A"));
                     for (int i = id_genero.size() - 1; i >= 0; i--) {
                         if (id_genero.get(i) == 3) {
                             id_genero.remove(i);
@@ -233,7 +233,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed0Filter.setCardBackgroundColor(Color.BLUE);
                     presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
-                    Ed0Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
+                    Ed0Filter.setCardBackgroundColor(Color.parseColor("#07247A"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
                         if (edadRecomendada.get(i) == 0) {
                             edadRecomendada.remove(i);
@@ -253,7 +253,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed3Filter.setCardBackgroundColor(Color.BLUE);
                     presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
-                    Ed3Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
+                    Ed3Filter.setCardBackgroundColor(Color.parseColor("#07247A"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
                         if (edadRecomendada.get(i) == 3) {
                             edadRecomendada.remove(i);
@@ -273,7 +273,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed7Filter.setCardBackgroundColor(Color.BLUE);
                     presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
-                    Ed7Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
+                    Ed7Filter.setCardBackgroundColor(Color.parseColor("#07247A"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
                         if (edadRecomendada.get(i) == 7) {
                             edadRecomendada.remove(i);
@@ -293,7 +293,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed12Filter.setCardBackgroundColor(Color.BLUE);
                     presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
-                    Ed12Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
+                    Ed12Filter.setCardBackgroundColor(Color.parseColor("#07247A"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
                         if (edadRecomendada.get(i) == 12) {
                             edadRecomendada.remove(i);
@@ -313,7 +313,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed16Filter.setCardBackgroundColor(Color.BLUE);
                     presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
-                    Ed16Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
+                    Ed16Filter.setCardBackgroundColor(Color.parseColor("#07247A"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
                         if (edadRecomendada.get(i) == 16) {
                             edadRecomendada.remove(i);
@@ -333,7 +333,7 @@ public class Home extends AppCompatActivity implements ContractListObraFilter.Vi
                     Ed18Filter.setCardBackgroundColor(Color.BLUE);
                     presenter3.listObraFilter(id_genero, edadRecomendada, titulo);
                 } else {
-                    Ed18Filter.setCardBackgroundColor(Color.parseColor("#BB86FC"));
+                    Ed18Filter.setCardBackgroundColor(Color.parseColor("#07247A"));
                     for (int i = edadRecomendada.size() - 1; i >= 0; i--) {
                         if (edadRecomendada.get(i) == 18) {
                             edadRecomendada.remove(i);
